@@ -8,7 +8,7 @@ const appRoutes: Routes = [
     { path: '', redirectTo: 'fooldal', pathMatch: 'full' },
     { path: '404', component: Page404Component },
     { path: 'fooldal', component: MainPageComponent },
-    { path: '**', redirectTo: '404', pathMatch: 'full' },  // ennek utolsonak kell lenni
+    { path: '**', redirectTo: '404', pathMatch: 'full' },  // ennek utolsonak kell lenni mert mindent redirectel
 ];
 
 @NgModule({
