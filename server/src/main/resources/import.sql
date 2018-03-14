@@ -1,0 +1,1 @@
+INSERT INTO USER_TABLE (id, name) values (1, 'test name');

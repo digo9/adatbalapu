@@ -10,18 +10,14 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @ComponentScan
 public class DatabaseConfiguration {
 
-  /**
-   * Database connection trough oracle jdbc driver
-   * 
-   * @return dataSoruce
-   */
   @Bean
   public DataSource dataSource() {
-    DriverManagerDataSource dataSoruce = new DriverManagerDataSource();
-    dataSoruce.setDriverClassName(oracle.jdbc.driver.OracleDriver.class.getName());
-    dataSoruce.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-    dataSoruce.setUsername("system");
-    dataSoruce.setPassword("1234");
-    return dataSoruce;
+    DriverManagerDataSource ds = new DriverManagerDataSource();
+    ds.setDriverClassName(oracle.jdbc.driver.OracleDriver.class.getName());
+    ds.setUrl("jdbc:oracle:thin:@localhost:4000:kabinet");
+    // h-s azonosító és pw megadása
+    ds.setUsername("");
+    ds.setPassword("");
+    return ds;
   }
 }

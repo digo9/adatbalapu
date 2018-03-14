@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 
@@ -20,6 +21,7 @@ import { Page404Component } from './error-pages/page-404/page-404.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRouting
   ],
   providers: [],
