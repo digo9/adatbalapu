@@ -9,6 +9,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRouting } from './app.routing';
 import { Page404Component } from './error-pages/page-404/page-404.component';
+import { UsersComponent } from './users/users.component';
+import { APIModule } from './_api-module/api.module';
 
 
 @NgModule({
@@ -17,12 +19,14 @@ import { Page404Component } from './error-pages/page-404/page-404.component';
     MainPageComponent,
     HeaderComponent,
     FooterComponent,
-    Page404Component
+    Page404Component,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRouting
+    AppRouting,
+    APIModule
   ],
   providers: [],
   bootstrap: [AppComponent]
