@@ -1,0 +1,32 @@
+img {
+    width: 100%;
+    opacity: 0.3;
+}
+
+.text-404 {
+    width: 300px;
+    height: 250px;
+   
+    color: white;
+    position:absolute; /*it can be fixed too*/
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+
+    /*this to solve "the content will not be cut when the window is smaller than the content": */
+    max-width:100%;
+    max-height:100%;
+    overflow:auto;
+}
+
+h1 {
+    font-size: 155px;
+}
+
+p {
+    margin:auto;
+}
+
+.container-404 {
+    background-color: Black;
+}
