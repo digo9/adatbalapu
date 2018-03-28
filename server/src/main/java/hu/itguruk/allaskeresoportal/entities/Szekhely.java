@@ -6,36 +6,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.Data;
 
+@Table(name = "SZEKHELY")
 @Entity
-public class User {
+public class Szekhely {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
   @SequenceGenerator(sequenceName = "customer_seq", allocationSize = 1, name = "CUST_SEQ")
   private Long id;
 
-  private String nev;
+  private String megye;
 
-  private Role role;
+  private String cim;
 
-  public User() {}
+  public Szekhely() {}
 
-  public String getNev() {
-    return nev;
+  public String getMegye() {
+    return megye;
   }
 
-  public void setNev(String nev) {
-    this.nev = nev;
+  public void setMegye(String megye) {
+    this.megye = megye;
   }
 
-  public Role getRole() {
-    return role;
+  public String getCim() {
+    return cim;
   }
 
-  public void setRole(Role role) {
-    this.role = role;
+  public void setCim(String cim) {
+    this.cim = cim;
   }
+
 
 }

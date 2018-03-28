@@ -13,7 +13,7 @@ public class UserService {
   UserRepository userRepository;
 
   public void generateUser() {
-    userRepository.save(new User("Username"));
+    // userRepository.save(new User("Username"));
   }
 
   public List<User> getAllUser() {

@@ -1,15 +1,17 @@
 package hu.itguruk.allaskeresoportal.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.Data;
 
+@Table(name = "MUNKALTATO")
 @Entity
-public class User {
+public class Munkaltato {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
@@ -18,9 +20,12 @@ public class User {
 
   private String nev;
 
-  private Role role;
+  private String cegLeiras;
 
-  public User() {}
+  @OneToMany
+  private List<Szekhely> szekhely;
+
+  public Munkaltato() {}
 
   public String getNev() {
     return nev;
@@ -30,12 +35,20 @@ public class User {
     this.nev = nev;
   }
 
-  public Role getRole() {
-    return role;
+  public String getCegLeiras() {
+    return cegLeiras;
   }
 
-  public void setRole(Role role) {
-    this.role = role;
+  public void setCegLeiras(String cegLeiras) {
+    this.cegLeiras = cegLeiras;
+  }
+
+  public List<Szekhely> getSzekhely() {
+    return szekhely;
+  }
+
+  public void setSzekhely(List<Szekhely> szekhely) {
+    this.szekhely = szekhely;
   }
 
 }
