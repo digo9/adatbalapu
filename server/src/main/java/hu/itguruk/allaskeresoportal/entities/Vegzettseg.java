@@ -7,13 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Vegzettseg {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
-  @SequenceGenerator(sequenceName = "customer_seq", allocationSize = 1, name = "CUST_SEQ")
+  @GeneratedValue()
   private Long id;
 
   @ManyToOne
@@ -21,7 +21,8 @@ public class Vegzettseg {
 
   private String megnevezes;
 
-  private Date megszerzesDatuma;
+  @Size(max = 4)
+  private int megszerzesDatuma;
 
   public Vegzettseg() {}
 
@@ -41,11 +42,11 @@ public class Vegzettseg {
     this.megnevezes = megnevezes;
   }
 
-  public Date getMegszerzesDatuma() {
+  public int getMegszerzesDatuma() {
     return megszerzesDatuma;
   }
 
-  public void setMegszerzesDatuma(Date megszerzesDatuma) {
+  public void setMegszerzesDatuma(int megszerzesDatuma) {
     this.megszerzesDatuma = megszerzesDatuma;
   }
 

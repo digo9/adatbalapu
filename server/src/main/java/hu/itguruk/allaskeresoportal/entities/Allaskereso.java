@@ -14,12 +14,15 @@ import javax.validation.constraints.Size;
 
 @Table(name = "ALLASKERESO")
 @Entity
-public class Allaskereso extends User {
+public class Allaskereso {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
-  @SequenceGenerator(sequenceName = "customer_seq", allocationSize = 1, name = "CUST_SEQ")
+  @GeneratedValue()
   private Long id;
+
+  private String nev;
+
+  private Role role;
 
   @Size(max = 200)
   private String elerhetoseg;
@@ -31,9 +34,6 @@ public class Allaskereso extends User {
 
   @OneToOne
   private Oneletrajz oneletrajz;
-
-  @OneToMany
-  private List<Vegzettseg> vegzettseg;
 
   public Allaskereso() {}
 
@@ -69,12 +69,21 @@ public class Allaskereso extends User {
     this.oneletrajz = oneletrajz;
   }
 
-  public List<Vegzettseg> getVegzettseg() {
-    return vegzettseg;
+  public String getNev() {
+    return nev;
   }
 
-  public void setVegzettseg(List<Vegzettseg> vegzettseg) {
-    this.vegzettseg = vegzettseg;
+  public void setNev(String nev) {
+    this.nev = nev;
   }
+
+  public Role getRole() {
+    return role;
+  }
+
+  public void setRole(Role role) {
+    this.role = role;
+  }
+
 
 }

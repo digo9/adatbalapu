@@ -14,18 +14,14 @@ import javax.validation.constraints.Size;
 public class Oneletrajz {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
-  @SequenceGenerator(sequenceName = "customer_seq", allocationSize = 1, name = "CUST_SEQ")
+  @GeneratedValue()
   private Long id;
 
-  @Size(max = 20)
+  @Size(max = 30)
   private String nyelv;
 
   @Size(max = 2000)
   private String leiras;
-
-  @OneToOne
-  private Allaskereso allaskereso;
 
   public Oneletrajz() {}
 
@@ -43,14 +39,6 @@ public class Oneletrajz {
 
   public void setLeiras(String leiras) {
     this.leiras = leiras;
-  }
-
-  public Allaskereso getAllaskereso() {
-    return allaskereso;
-  }
-
-  public void setAllaskereso(Allaskereso allaskereso) {
-    this.allaskereso = allaskereso;
   }
 
 }

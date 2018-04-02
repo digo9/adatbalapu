@@ -14,8 +14,7 @@ import javax.persistence.Table;
 public class Munkaltato {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
-  @SequenceGenerator(sequenceName = "customer_seq", allocationSize = 1, name = "CUST_SEQ")
+  @GeneratedValue()
   private Long id;
 
   private String nev;
