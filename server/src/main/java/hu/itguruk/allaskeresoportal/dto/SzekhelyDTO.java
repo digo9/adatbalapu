@@ -1,10 +1,8 @@
 package hu.itguruk.allaskeresoportal.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class SzekhelyDTO {
 
     private Long id;
@@ -13,10 +11,4 @@ public class SzekhelyDTO {
 
     private String cim;
 
-    public SzekhelyDTO() {}
-
-    public SzekhelyDTO(String megye, String cim) {
-        this.megye = megye;
-        this.cim = cim;
-    }
 }

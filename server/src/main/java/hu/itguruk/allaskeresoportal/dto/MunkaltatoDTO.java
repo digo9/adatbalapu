@@ -1,13 +1,10 @@
 package hu.itguruk.allaskeresoportal.dto;
 
-import hu.itguruk.allaskeresoportal.entities.Szekhely;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 public class MunkaltatoDTO {
 
     private Long id;
@@ -16,13 +13,6 @@ public class MunkaltatoDTO {
 
     private String cegLeiras;
 
-    private List<Szekhely> szekhely;
+    private List<SzekhelyDTO> szekhely;
 
-    public MunkaltatoDTO() {}
-
-    public MunkaltatoDTO(String nev, String cegLeiras, List<Szekhely> szekhely) {
-        this.nev = nev;
-        this.cegLeiras = cegLeiras;
-        this.szekhely = szekhely;
-    }
 }

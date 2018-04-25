@@ -1,5 +1,10 @@
 package hu.itguruk.allaskeresoportal.entities;
 
+import java.io.Serializable;
+import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
+import lombok.Data;
+
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,11 +13,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
+@Data
 @Entity
-public class Allasajanlat {
+public class Allasajanlat implements Serializable {
 
   @Id
-  @GeneratedValue()
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AllasajanlSeq")
+  @SequenceGenerator(sequenceName = "ALLASAJANL_SEQ", allocationSize = 1, name = "AllasajanlSeq", initialValue = 30)
   private Long id;
 
   private String elvartVegzettsegek;
@@ -25,47 +32,4 @@ public class Allasajanlat {
 
   @Size(max = 2000)
   private String leiras;
-
-  public Allasajanlat() {}
-
-  public String getElvartVegzettsegek() {
-    return elvartVegzettsegek;
-  }
-
-  public void setElvartVegzettsegek(String elvartVegzettsegek) {
-    this.elvartVegzettsegek = elvartVegzettsegek;
-  }
-
-  public List<Allaskereso> getJeletnekzok() {
-    return jelentkezo;
-  }
-
-  public void setJeletnekzok(List<Allaskereso> jeletnekzo) {
-    this.jelentkezo = jeletnekzo;
-  }
-
-  public Munkaltato getAjanlatFeladoja() {
-    return ajanlatFeladoja;
-  }
-
-  public void setAjanlatFeladoja(Munkaltato ajanlatFeladoja) {
-    this.ajanlatFeladoja = ajanlatFeladoja;
-  }
-
-  public List<Allaskereso> getJelentkezo() {
-    return jelentkezo;
-  }
-
-  public void setJelentkezo(List<Allaskereso> jelentkezo) {
-    this.jelentkezo = jelentkezo;
-  }
-
-  public String getLeiras() {
-    return leiras;
-  }
-
-  public void setLeiras(String leiras) {
-    this.leiras = leiras;
-  }
-
 }

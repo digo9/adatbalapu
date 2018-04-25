@@ -2,13 +2,11 @@ package hu.itguruk.allaskeresoportal.dto;
 
 import hu.itguruk.allaskeresoportal.entities.Oneletrajz;
 import hu.itguruk.allaskeresoportal.entities.Role;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
 public class AllaskeresoDTO {
 
     private Long id;
@@ -24,16 +22,5 @@ public class AllaskeresoDTO {
     private Date utolsoBejelentkezes;
 
     private Oneletrajz oneletrajz;
-
-    public AllaskeresoDTO() {}
-
-    public AllaskeresoDTO(String nev, Role role, String elerhetoseg, String statusz, Date utolsoBejelentkezes, Oneletrajz oneletrajz) {
-        this.nev = nev;
-        this.role = role;
-        this.elerhetoseg = elerhetoseg;
-        this.statusz = statusz;
-        this.utolsoBejelentkezes = utolsoBejelentkezes;
-        this.oneletrajz = oneletrajz;
-    }
 
 }

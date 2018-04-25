@@ -1,10 +1,8 @@
 package hu.itguruk.allaskeresoportal.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class OneletrajzDTO {
 
     private Long id;
@@ -12,12 +10,5 @@ public class OneletrajzDTO {
     private String nyelv;
 
     private String leiras;
-
-    public OneletrajzDTO() {}
-
-    public OneletrajzDTO(String nyelv, String leiras) {
-        this.nyelv = nyelv;
-        this.leiras = leiras;
-    }
 
 }

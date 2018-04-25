@@ -8,12 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.Size;
+import lombok.Data;
 
+@Data
 @Entity
 public class Vegzettseg {
 
   @Id
-  @GeneratedValue()
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VegzettsegSeq")
+  @SequenceGenerator(sequenceName = "VEGZETTSEG_SEQ", allocationSize = 1, name = "VegzettsegSeq", initialValue = 30)
   private Long id;
 
   @ManyToOne
@@ -23,31 +26,5 @@ public class Vegzettseg {
 
   @Size(max = 4)
   private int megszerzesDatuma;
-
-  public Vegzettseg() {}
-
-  public Allaskereso getAllaskereso() {
-    return allaskereso;
-  }
-
-  public void setAllaskereso(Allaskereso allaskereso) {
-    this.allaskereso = allaskereso;
-  }
-
-  public String getMegnevezes() {
-    return megnevezes;
-  }
-
-  public void setMegnevezes(String megnevezes) {
-    this.megnevezes = megnevezes;
-  }
-
-  public int getMegszerzesDatuma() {
-    return megszerzesDatuma;
-  }
-
-  public void setMegszerzesDatuma(int megszerzesDatuma) {
-    this.megszerzesDatuma = megszerzesDatuma;
-  }
 
 }
