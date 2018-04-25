@@ -1,6 +1,6 @@
 package hu.itguruk.allaskeresoportal.service;
 
-public interface UserService {
+public interface AllasajanlatService {
 
 
 }
