@@ -1,0 +1,109 @@
+<div class="container">
+  <h1>Profil Regisztrálása</h1>
+  <form>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="profileType" id="profileType1" [value]="0" [(ngModel)]="profileType" checked>
+      <label class="form-check-label" for="profileType1">
+        Állást kereső
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="profileType" id="profileType2" [value]="1" [(ngModel)]="profileType">
+      <label class="form-check-label" for="profileType2">
+        Állásat ajánló
+      </label>
+    </div>
+    <fieldset *ngIf="profileType == 0">
+      <div class="form-group">
+        <label for="lastName">Vezetéknév</label>
+        <input type="text" class="form-control" id="lastName">
+      </div>
+      <div class="form-group">
+        <label for="firstName">Keresztnév</label>
+        <input type="text" class="form-control" id="firstName">
+      </div>
+    </fieldset>
+    <fieldset *ngIf="profileType == 1">
+      <div class="form-group">
+        <label for="companyName">Cégnév</label>
+        <input type="text" class="form-control" id="companyName">
+      </div>
+      <div class="form-group">
+        <label for="companyDescription">Cég leírás</label>
+        <textarea rows="4" cols="50" class="form-control" id="companyDescription"></textarea>
+      </div>
+    </fieldset>
+    <div class="form-group">
+      <label for="password">Jelszó</label>
+      <input type="password" class="form-control" id="password">
+    </div>
+    <div class="form-group">
+      <label for="email">Email cím</label>
+      <input type="email" class="form-control" id="email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="contact">Elérhetőség</label>
+      <input type="text" class="form-control" id="contact">
+    </div>
+    <fieldset *ngIf="profileType == 1">
+      <h5>Székhely:</h5>
+      <div class="form-group">
+        <label for="county">Megye</label>
+        <select class="custom-select mr-sm-2" id="countySelect">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="cityStreet">Város, utca</label>
+        <input type="text" class="form-control" id="cityStreet">
+      </div>
+    </fieldset>
+    <button *ngIf="profileType == 0" class="btn btn-outline-primary" (click)="open(content)">Önéletrajt kitöltése</button>
+    <button (click)="submitForm()" class="btn btn-primary">Regisztráció</button>
+  </form>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Önéletrajz adatok megadása</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="container">
+    <div class="form-group">
+      <label for="languages">Beszélt nyelvek</label>
+      <select class="custom-select mr-sm-2" id="languages">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="qualifications">Végzettség</label>
+      <input type="text" class="form-control" id="qualifications">
+    </div>
+    <div class="form-group">
+      <label for="qualificationsYear">Megszerzés éve</label>
+      <select class="custom-select mr-sm-2" id="qualificationsYear">
+        <option selected>Choose...</option>
+        <option value="1991">1991</option>
+        <option value="1992">1992</option>
+        <option value="1993">1993</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="contact">Bemutatkozás/ rövid leírás</label>
+      <textarea rows="4" cols="50" class="form-control" id="companyDescription"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="c('Close click')">Mentés</button>
+    <button type="button" class="btn btn-danger" (click)="c('Close click')">Mégsem</button>
+  </div>
+</ng-template>
