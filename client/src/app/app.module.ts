@@ -18,6 +18,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { FindJobsComponent } from './find-jobs/find-jobs.component';
 import { JobComponent } from './job/job.component';
 import { NewOfferComponent } from './new-offer/new-offer.component';
+import { RegisterService } from './registration/registration.service';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { NewOfferComponent } from './new-offer/new-offer.component';
     FormsModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

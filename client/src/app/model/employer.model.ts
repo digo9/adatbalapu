@@ -6,6 +6,10 @@ export class Employer {
 
     public name?: string;
 
+    public password?: string;
+
+    public email?: string;
+
     public bio?: string;
 
     public headquarters?: Headquarters;

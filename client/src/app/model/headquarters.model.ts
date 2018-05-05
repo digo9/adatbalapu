@@ -1,8 +1,10 @@
+import { County } from './user.model';
+
 export class Headquarters {
 
     public id?: number;
 
-    public county?: string;
+    public county?: County;
 
     public address?: string;
 
