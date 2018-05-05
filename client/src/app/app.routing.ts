@@ -7,6 +7,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { JobComponent } from './job/job.component';
 import { FindJobsComponent } from './find-jobs/find-jobs.component';
+import { NewOfferComponent } from './new-offer/new-offer.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'joboffer', component: JobComponent },
   { path: 'findjobs', component: FindJobsComponent },
+  { path: 'newoffer', component: NewOfferComponent },
   { path: '**', redirectTo: '404', pathMatch: 'full' } // ennek utolsonak kell lenni mert mindent redirectel
 ];
 

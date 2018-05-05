@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrationComponent } from './registration/registration.component';
 import { FindJobsComponent } from './find-jobs/find-jobs.component';
 import { JobComponent } from './job/job.component';
+import { NewOfferComponent } from './new-offer/new-offer.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { JobComponent } from './job/job.component';
     LoginComponent,
     RegistrationComponent,
     FindJobsComponent,
-    JobComponent
+    JobComponent,
+    NewOfferComponent
   ],
   imports: [
     BrowserModule,
