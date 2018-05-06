@@ -34,6 +34,7 @@ public class BaseUser {
     @ManyToMany
     private Set<Role> roles;
 
+    private Boolean enabled;
 
 //    @JsonIgnore
 //    public String getPassword() {
