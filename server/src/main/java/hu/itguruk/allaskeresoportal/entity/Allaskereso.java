@@ -1,29 +1,28 @@
-package hu.itguruk.allaskeresoportal.entities;
+package hu.itguruk.allaskeresoportal.entity;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-@Table(name = "ALLASKERESO")
 @Entity
 public class Allaskereso {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AllaskeresoSeq")
-  @SequenceGenerator(sequenceName = "ALLASKERESO_SEQ", allocationSize = 1, name = "AllaskeresoSeq", initialValue = 30)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "allaskereso_seq")
+  @SequenceGenerator(name = "allaskereso_seq", sequenceName = "allaskereso_seq", allocationSize = 1)
   private Long id;
 
-  private String nev;
+  private String vezeteknev;
 
-  private Role role;
+  private String keresztnev;
 
   @Size(max = 200)
   private String elerhetoseg;
@@ -33,7 +32,10 @@ public class Allaskereso {
 
   private Date utolsoBejelentkezes;
 
-  @OneToOne
+  @OneToOne(cascade = {CascadeType.REMOVE})
   private Oneletrajz oneletrajz;
+
+  @OneToOne(cascade = {CascadeType.REMOVE})
+  private BaseUser baseUser;
 
 }

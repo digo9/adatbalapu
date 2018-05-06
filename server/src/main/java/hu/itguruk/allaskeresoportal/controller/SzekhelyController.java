@@ -1,7 +1,7 @@
 package hu.itguruk.allaskeresoportal.controller;
 
 import hu.itguruk.allaskeresoportal.dto.SzekhelyDTO;
-import hu.itguruk.allaskeresoportal.entities.Szekhely;
+import hu.itguruk.allaskeresoportal.entity.Szekhely;
 import hu.itguruk.allaskeresoportal.repository.SzekhelyRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -40,10 +41,17 @@ public class SzekhelyController {
     return modelMapper.map(szekhelyRepository.getOne(id),SzekhelyDTO.class);
   }
 
-  @PostMapping("/saveorupdate")
+  @PostMapping("/create")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<Szekhely> saveOrUpdate(@RequestBody SzekhelyDTO szekhelyDTO) {
+  public ResponseEntity<Szekhely> create(@RequestBody SzekhelyDTO szekhelyDTO) {
     Szekhely szekhely = modelMapper.map(szekhelyDTO, Szekhely.class);
     return ResponseEntity.ok(szekhelyRepository.save(szekhely));
+  }
+
+  @PutMapping("/update")
+  @ResponseStatus(value = HttpStatus.OK)
+  public ResponseEntity<Szekhely> update(@RequestBody SzekhelyDTO szekhelyDTO) {
+    Szekhely vegzettseg = modelMapper.map(szekhelyDTO, Szekhely.class);
+    return ResponseEntity.ok(szekhelyRepository.save(vegzettseg));
   }
 }

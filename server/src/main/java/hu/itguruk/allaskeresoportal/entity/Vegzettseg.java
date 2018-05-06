@@ -1,6 +1,7 @@
-package hu.itguruk.allaskeresoportal.entities;
+package hu.itguruk.allaskeresoportal.entity;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,7 @@ public class Vegzettseg {
   @SequenceGenerator(sequenceName = "VEGZETTSEG_SEQ", allocationSize = 1, name = "VegzettsegSeq", initialValue = 30)
   private Long id;
 
-  @ManyToOne
+  @ManyToOne(cascade = {CascadeType.REMOVE})
   private Allaskereso allaskereso;
 
   private String megnevezes;

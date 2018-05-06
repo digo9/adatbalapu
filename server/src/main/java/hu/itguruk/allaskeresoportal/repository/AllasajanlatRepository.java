@@ -1,6 +1,6 @@
 package hu.itguruk.allaskeresoportal.repository;
 
-import hu.itguruk.allaskeresoportal.entities.Allasajanlat;
+import hu.itguruk.allaskeresoportal.entity.Allasajanlat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

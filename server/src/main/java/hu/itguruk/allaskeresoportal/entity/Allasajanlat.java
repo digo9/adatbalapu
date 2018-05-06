@@ -1,8 +1,10 @@
-package hu.itguruk.allaskeresoportal.entities;
+package hu.itguruk.allaskeresoportal.entity;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import lombok.Data;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
+@Table(name = "ALLASAJANLAT")
 public class Allasajanlat implements Serializable {
 
   @Id
@@ -24,10 +27,10 @@ public class Allasajanlat implements Serializable {
 
   private String elvartVegzettsegek;
 
-  @ManyToMany
+  @ManyToMany(cascade = {CascadeType.REMOVE})
   private List<Allaskereso> jelentkezo;
 
-  @ManyToOne
+  @ManyToOne(cascade = {CascadeType.REMOVE})
   private Munkaltato ajanlatFeladoja;
 
   @Size(max = 2000)

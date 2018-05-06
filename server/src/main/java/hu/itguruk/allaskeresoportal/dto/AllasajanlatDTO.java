@@ -1,6 +1,6 @@
 package hu.itguruk.allaskeresoportal.dto;
 
-import hu.itguruk.allaskeresoportal.entities.Munkaltato;
+import hu.itguruk.allaskeresoportal.entity.Munkaltato;
 import lombok.Data;
 
 import java.util.List;

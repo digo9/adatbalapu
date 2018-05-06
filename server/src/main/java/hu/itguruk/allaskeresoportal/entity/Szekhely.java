@@ -1,9 +1,11 @@
-package hu.itguruk.allaskeresoportal.entities;
+package hu.itguruk.allaskeresoportal.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Data;
@@ -21,5 +23,8 @@ public class Szekhely {
   private String megye;
 
   private String cim;
+
+  @ManyToOne(cascade = {CascadeType.REMOVE})
+  private Munkaltato munkaltato;
 
 }

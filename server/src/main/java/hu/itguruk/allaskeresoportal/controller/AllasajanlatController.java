@@ -1,7 +1,7 @@
 package hu.itguruk.allaskeresoportal.controller;
 
 import hu.itguruk.allaskeresoportal.dto.AllasajanlatDTO;
-import hu.itguruk.allaskeresoportal.entities.Allasajanlat;
+import hu.itguruk.allaskeresoportal.entity.Allasajanlat;
 import hu.itguruk.allaskeresoportal.repository.AllasajanlatRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,11 +35,18 @@ public class AllasajanlatController {
         return modelMapper.map(allasajanlatRepository.getOne(id),AllasajanlatDTO.class);
     }
 
-    @PostMapping("/saveorupdate")
+    @PostMapping("/create")
     @ResponseStatus(value = HttpStatus.OK)
     public ResponseEntity<Allasajanlat> saveOrUpdate(@RequestBody AllasajanlatDTO allasajanlatDTO) {
         Allasajanlat allasajanlat = modelMapper.map(allasajanlatDTO, Allasajanlat.class);
         return ResponseEntity.ok(allasajanlatRepository.save(allasajanlat));
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(value = HttpStatus.OK)
+    public ResponseEntity<Allasajanlat> update(@RequestBody AllasajanlatDTO allasajanlatDTO) {
+        Allasajanlat vegzettseg = modelMapper.map(allasajanlatDTO, Allasajanlat.class);
+        return ResponseEntity.ok(allasajanlatRepository.save(vegzettseg));
     }
 
 }

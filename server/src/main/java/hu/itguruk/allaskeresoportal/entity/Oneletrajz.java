@@ -1,9 +1,11 @@
-package hu.itguruk.allaskeresoportal.entities;
+package  hu.itguruk.allaskeresoportal.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -24,5 +26,8 @@ public class Oneletrajz {
 
   @Size(max = 2000)
   private String leiras;
+
+  @OneToOne(cascade = {CascadeType.REMOVE})
+  private Allaskereso allaskeso;
 
 }

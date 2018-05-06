@@ -1,7 +1,7 @@
 package hu.itguruk.allaskeresoportal.dto;
 
-import hu.itguruk.allaskeresoportal.entities.Oneletrajz;
-import hu.itguruk.allaskeresoportal.entities.Role;
+import hu.itguruk.allaskeresoportal.entity.Oneletrajz;
+import hu.itguruk.allaskeresoportal.entity.Role;
 import lombok.Data;
 
 import java.util.Date;

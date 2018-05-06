@@ -1,7 +1,7 @@
 package hu.itguruk.allaskeresoportal.controller;
 
 import hu.itguruk.allaskeresoportal.dto.MunkaltatoDTO;
-import hu.itguruk.allaskeresoportal.entities.Munkaltato;
+import hu.itguruk.allaskeresoportal.entity.Munkaltato;
 import hu.itguruk.allaskeresoportal.repository.MunkaltatoRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -40,10 +41,17 @@ public class MunkaltatoController {
     return modelMapper.map(munkaltatoRepository.getOne(id),MunkaltatoDTO.class);
   }
 
-  @PostMapping("/saveorupdate")
+  @PostMapping("/create")
   @ResponseStatus(value = HttpStatus.OK)
   public ResponseEntity<Munkaltato> saveOrUpdate(@RequestBody MunkaltatoDTO munkaltatoDTO) {
     Munkaltato munkaltato = modelMapper.map(munkaltatoDTO, Munkaltato.class);
     return ResponseEntity.ok(munkaltatoRepository.save(munkaltato));
+  }
+
+  @PutMapping("/update")
+  @ResponseStatus(value = HttpStatus.OK)
+  public ResponseEntity<Munkaltato> update(@RequestBody MunkaltatoDTO munkaltatoDTO) {
+    Munkaltato vegzettseg = modelMapper.map(munkaltatoDTO, Munkaltato.class);
+    return ResponseEntity.ok(munkaltatoRepository.save(vegzettseg));
   }
 }

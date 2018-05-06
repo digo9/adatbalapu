@@ -3,7 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,8 +17,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { FindJobsComponent } from './find-jobs/find-jobs.component';
 import { JobComponent } from './job/job.component';
 import { NewOfferComponent } from './new-offer/new-offer.component';
-import { RegisterService } from './registration/registration.service';
-
+import { HttpClientModule } from '@angular/common/http';
+import { AllaskeresoService } from './service/allaskereso.service';
 
 @NgModule({
   declarations: [
@@ -41,9 +40,10 @@ import { RegisterService } from './registration/registration.service';
     AppRouting,
     APIModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [RegisterService],
+  providers: [AllaskeresoService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

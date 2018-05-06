@@ -2,7 +2,7 @@ package hu.itguruk.allaskeresoportal.controller;
 
 
 import hu.itguruk.allaskeresoportal.dto.AllaskeresoDTO;
-import hu.itguruk.allaskeresoportal.entities.Allaskereso;
+import hu.itguruk.allaskeresoportal.entity.Allaskereso;
 import hu.itguruk.allaskeresoportal.repository.AllaskeresoRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -41,10 +42,17 @@ public class AllaskeresoController {
     return modelMapper.map(allaskeresoRepository.getOne(id),AllaskeresoDTO.class);
   }
 
-  @PostMapping("/saveorupdate")
+  @PostMapping("/create")
   @ResponseStatus(value = HttpStatus.OK)
   public ResponseEntity<Allaskereso> saveOrUpdate(@RequestBody AllaskeresoDTO allaskeresoDTO) {
     Allaskereso allaskereso = modelMapper.map(allaskeresoDTO, Allaskereso.class);
     return ResponseEntity.ok(allaskeresoRepository.save(allaskereso));
+  }
+
+  @PutMapping("/update")
+  @ResponseStatus(value = HttpStatus.OK)
+  public ResponseEntity<Allaskereso> update(@RequestBody  AllaskeresoDTO allaskeresoDTO) {
+    Allaskereso vegzettseg = modelMapper.map(allaskeresoDTO, Allaskereso.class);
+    return ResponseEntity.ok(allaskeresoRepository.save(vegzettseg));
   }
 }

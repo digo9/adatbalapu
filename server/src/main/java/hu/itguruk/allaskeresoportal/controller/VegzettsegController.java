@@ -1,7 +1,7 @@
 package hu.itguruk.allaskeresoportal.controller;
 
 import hu.itguruk.allaskeresoportal.dto.VegzettsegDTO;
-import hu.itguruk.allaskeresoportal.entities.Vegzettseg;
+import hu.itguruk.allaskeresoportal.entity.Vegzettseg;
 import hu.itguruk.allaskeresoportal.repository.VegzettsegRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -40,10 +41,17 @@ public class VegzettsegController {
     return modelMapper.map(vegzettsegRepository.getOne(id),VegzettsegDTO.class);
   }
 
-  @PostMapping("/saveorupdate")
+  @PostMapping("/create")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<Vegzettseg> saveOrUpdate(@RequestBody VegzettsegDTO szekhelyDTO) {
-    Vegzettseg vegzettseg = modelMapper.map(szekhelyDTO, Vegzettseg.class);
+  public ResponseEntity<Vegzettseg> create(@RequestBody VegzettsegDTO vegzettsegDTO) {
+    Vegzettseg vegzettseg = modelMapper.map(vegzettsegDTO, Vegzettseg.class);
+    return ResponseEntity.ok(vegzettsegRepository.save(vegzettseg));
+  }
+
+  @PutMapping("/update")
+  @ResponseStatus(value = HttpStatus.OK)
+  public ResponseEntity<Vegzettseg> update(@RequestBody VegzettsegDTO vegzettsegDTO) {
+    Vegzettseg vegzettseg = modelMapper.map(vegzettsegDTO, Vegzettseg.class);
     return ResponseEntity.ok(vegzettsegRepository.save(vegzettseg));
   }
 }

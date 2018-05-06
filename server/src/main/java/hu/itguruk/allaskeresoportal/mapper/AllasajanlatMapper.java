@@ -1,7 +1,7 @@
 package hu.itguruk.allaskeresoportal.mapper;
 
 import hu.itguruk.allaskeresoportal.dto.AllasajanlatDTO;
-import hu.itguruk.allaskeresoportal.entities.Allasajanlat;
+import hu.itguruk.allaskeresoportal.entity.Allasajanlat;
 import org.modelmapper.ModelMapper;
 
 

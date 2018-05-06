@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation } from '../animations/fade-in.animation';
+import { AllaskeresoService } from '../service/allaskereso.service';
 
 @Component({
   selector: 'app-main-page',
@@ -10,13 +11,19 @@ import { fadeInAnimation } from '../animations/fade-in.animation';
   // attach the fade in animation to the host (root) element of this component
   // tslint:disable-next-line:use-host-property-decorator
   host: { '[@fadeInAnimation]': '' },
-  styleUrls: ['./main-page.component.css']
+  styleUrls: ['./main-page.component.css'],
+  providers: [AllaskeresoService]
 })
 export class MainPageComponent implements OnInit {
-
-  constructor() { }
+  constructor(private allaskeresoService: AllaskeresoService) {}
 
   ngOnInit() {
+    this.listAllaskeresokToConsole();
   }
 
+  listAllaskeresokToConsole() {
+    this.allaskeresoService.getAllaskeresoAll().subscribe(response => {
+      console.log(response);
+    });
+  }
 }
