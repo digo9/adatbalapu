@@ -1,5 +1,6 @@
 package hu.itguruk.allaskeresoportal.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -35,7 +36,8 @@ public class Allaskereso {
   @OneToOne(cascade = {CascadeType.REMOVE})
   private Oneletrajz oneletrajz;
 
-  @OneToOne(cascade = {CascadeType.REMOVE})
+  @JsonIgnore
+  @OneToOne
   private BaseUser baseUser;
 
 }

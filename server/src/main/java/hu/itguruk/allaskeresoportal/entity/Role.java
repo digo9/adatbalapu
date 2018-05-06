@@ -1,6 +1,7 @@
 package hu.itguruk.allaskeresoportal.entity;
 
 import java.util.List;
+import java.util.Set;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -26,7 +27,7 @@ public class Role implements Serializable {
     private String label;
 
     @ManyToMany
-    List<BaseUser> baseUser;
+    Set<BaseUser> baseUsers;
 
     public Role(String label) {
         this.label = label;

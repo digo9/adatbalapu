@@ -1,5 +1,6 @@
 package hu.itguruk.allaskeresoportal.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -26,7 +27,8 @@ public class Munkaltato {
   @OneToMany(cascade = {CascadeType.REMOVE})
   private List<Szekhely> szekhely;
 
-  @OneToOne(cascade = {CascadeType.REMOVE})
+  @JsonIgnore
+  @OneToOne
   private BaseUser baseUser;
 
 }

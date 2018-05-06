@@ -1,13 +1,18 @@
 package hu.itguruk.allaskeresoportal.entity;
 
 import java.util.List;
+import java.util.Set;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import lombok.NoArgsConstructor;
 
 @Entity()
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BaseUser {
 
     @Id
@@ -27,21 +32,8 @@ public class BaseUser {
     private String password;
 
     @ManyToMany
-    private List<Role> role;
+    private Set<Role> roles;
 
-    public BaseUser(String username, String email, String password, List<Role> role) {
-        this.setUsername(username);
-        this.setEmail(email);
-        this.setPassword(password);
-        this.setRole(role);
-    }
-
-    public BaseUser(Long id, String username, String email, String password, List<Role> role) {
-        this(username, email, password, role);
-        this.setId(id);
-    }
-
-    public BaseUser() {}
 
 //    @JsonIgnore
 //    public String getPassword() {
@@ -59,7 +51,4 @@ public class BaseUser {
     @OneToOne(cascade = {CascadeType.REMOVE})
     private Allaskereso allaskereso;
 
-    public void setRole(List<Role> roles) {
-        this.role = roles;
-    }
 }
