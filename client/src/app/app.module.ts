@@ -15,6 +15,10 @@ import { APIModule } from './_api-module/api.module';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrationComponent } from './registration/registration.component';
+import { FindJobsComponent } from './find-jobs/find-jobs.component';
+import { JobComponent } from './job/job.component';
+import { NewOfferComponent } from './new-offer/new-offer.component';
+import { RegisterService } from './registration/registration.service';
 
 
 @NgModule({
@@ -26,7 +30,10 @@ import { RegistrationComponent } from './registration/registration.component';
     Page404Component,
     UsersComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    FindJobsComponent,
+    JobComponent,
+    NewOfferComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,7 @@ import { RegistrationComponent } from './registration/registration.component';
     FormsModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

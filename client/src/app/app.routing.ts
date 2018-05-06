@@ -5,13 +5,19 @@ import { Page404Component } from './error-pages/page-404/page-404.component';
 import { UsersComponent } from './users/users.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
+import { JobComponent } from './job/job.component';
+import { FindJobsComponent } from './find-jobs/find-jobs.component';
+import { NewOfferComponent } from './new-offer/new-offer.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'fooldal', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '404', component: Page404Component },
-  { path: 'fooldal', component: MainPageComponent },
+  { path: 'home', component: MainPageComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'joboffer', component: JobComponent },
+  { path: 'findjobs', component: FindJobsComponent },
+  { path: 'newoffer', component: NewOfferComponent },
   { path: '**', redirectTo: '404', pathMatch: 'full' } // ennek utolsonak kell lenni mert mindent redirectel
 ];
 
@@ -19,4 +25,4 @@ const appRoutes: Routes = [
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
-export class AppRouting {}
+export class AppRouting { }
