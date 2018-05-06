@@ -1,5 +1,6 @@
 package hu.itguruk.allaskeresoportal.entity;
 
+import java.util.List;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,18 +26,17 @@ public class BaseUser {
     @NotNull
     private String password;
 
-    @OneToOne(cascade = {CascadeType.REMOVE})
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @ManyToMany
+    private List<Role> role;
 
-    public BaseUser(String username, String email, String password, Role role) {
+    public BaseUser(String username, String email, String password, List<Role> role) {
         this.setUsername(username);
         this.setEmail(email);
         this.setPassword(password);
         this.setRole(role);
     }
 
-    public BaseUser(Long id, String username, String email, String password, Role role) {
+    public BaseUser(Long id, String username, String email, String password, List<Role> role) {
         this(username, email, password, role);
         this.setId(id);
     }
@@ -58,4 +58,8 @@ public class BaseUser {
 
     @OneToOne(cascade = {CascadeType.REMOVE})
     private Allaskereso allaskereso;
+
+    public void setRole(List<Role> roles) {
+        this.role = roles;
+    }
 }
