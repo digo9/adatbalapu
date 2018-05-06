@@ -8,64 +8,35 @@ import { Szekhely } from '../model/szekhely.model';
 
 @Injectable()
 export class SzekhelyService {
-  private baseUrl = '/szekhely';
+  private baseUrl = '/szekhely/';
 
-  constructor(
-    private httpClient: HttpClient,
-    private serviceConfig: ServiceConfig
-  ) {}
-
-  private get onError(): (error: Response) => ErrorObservable {
-    return this.serviceConfig.onError || this.handleError.bind(this);
-  }
-
-  private handleError(error: Response): ErrorObservable {
-    // in a real world app, we may send the error to some remote logging infrastructure
-    // instead of just logging it to the console
-    this.log('error', error);
-
-    return Observable.throw(error);
-  }
-
-  private log(level: string, message: any): void {
-    if (this.serviceConfig.debug) {
-      console[level](message);
-    }
-  }
+  constructor(private httpClient: HttpClient) {}
 
   public getSzekhelyAll(): Observable<Szekhely> {
-    const url = SERVER_API_URL + this.baseUrl + '/all';
+    const url = SERVER_API_URL + this.baseUrl + 'all';
     const params = new HttpParams();
 
-    return this.httpClient
-      .get<Szekhely>(url, { params: params })
-      .catch((error: Response) => this.onError(error));
+    return this.httpClient.get<Szekhely>(url, { params: params });
   }
 
   public getSzekhelyById(id: number): Observable<Szekhely> {
     const url = SERVER_API_URL + this.baseUrl + id;
     const params = new HttpParams();
 
-    return this.httpClient
-      .get<Szekhely>(url, { params: params })
-      .catch((error: Response) => this.onError(error));
+    return this.httpClient.get<Szekhely>(url, { params: params });
   }
 
   public createSzekhelyat(szekhely: Szekhely): Observable<Szekhely> {
-    const url = SERVER_API_URL + this.baseUrl + '/create';
+    const url = SERVER_API_URL + this.baseUrl + 'create';
     const params = new HttpParams();
 
-    return this.httpClient
-      .post<Szekhely>(url, szekhely, { params: params })
-      .catch((error: Response) => this.onError(error));
+    return this.httpClient.post<Szekhely>(url, szekhely, { params: params });
   }
 
   public updateSzekhelyAdatok(szekhely: Szekhely): Observable<Szekhely> {
-    const url = SERVER_API_URL + this.baseUrl + '/update';
+    const url = SERVER_API_URL + this.baseUrl + 'update';
     const params = new HttpParams();
 
-    return this.httpClient
-      .put<Szekhely>(url, szekhely, { params: params })
-      .catch((error: Response) => this.onError(error));
+    return this.httpClient.put<Szekhely>(url, szekhely, { params: params });
   }
 }

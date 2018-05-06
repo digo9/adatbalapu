@@ -7,20 +7,15 @@ import { Allaskereso } from '../model/allaskereso.model';
 
 @Injectable()
 export class AllaskeresoService {
-  private baseUrl = '/allaskereso';
+  private baseUrl = '/allaskereso/';
 
   constructor(private httpClient: HttpClient) {}
 
   public getAllaskeresoAll(): Observable<Allaskereso> {
-    const headers = new HttpHeaders()
-      .set('Content-Type', 'application/x-www-form-urlencoded')
-      .set('Access-Control-Allow-Origin', '*');
-
-    const url = SERVER_API_URL + this.baseUrl + '/all';
+    const url = SERVER_API_URL + this.baseUrl + 'all';
     const params = new HttpParams();
 
     return this.httpClient.get<Allaskereso>(url, {
-      headers: headers,
       params: params
     });
   }
@@ -33,7 +28,7 @@ export class AllaskeresoService {
   }
 
   public createAllaskereso(allaskereso: Allaskereso): Observable<Allaskereso> {
-    const url = SERVER_API_URL + this.baseUrl + '/create';
+    const url = SERVER_API_URL + this.baseUrl + 'create';
     const params = new HttpParams();
 
     return this.httpClient.post<Allaskereso>(url, allaskereso, {
@@ -44,7 +39,7 @@ export class AllaskeresoService {
   public updateBemutatkozoAdatok(
     allaskereso: Allaskereso
   ): Observable<Allaskereso> {
-    const url = SERVER_API_URL + this.baseUrl + '/update';
+    const url = SERVER_API_URL + this.baseUrl + 'update';
     const params = new HttpParams();
 
     return this.httpClient.put<Allaskereso>(url, allaskereso, {
