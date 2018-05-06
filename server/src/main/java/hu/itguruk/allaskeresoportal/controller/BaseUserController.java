@@ -1,7 +1,10 @@
 package hu.itguruk.allaskeresoportal.controller;
 
+import hu.itguruk.allaskeresoportal.dto.BaseUserDTO;
 import hu.itguruk.allaskeresoportal.dto.MunkaltatoDTO;
+import hu.itguruk.allaskeresoportal.entity.BaseUser;
 import hu.itguruk.allaskeresoportal.entity.Munkaltato;
+import hu.itguruk.allaskeresoportal.repository.BaseUserRepository;
 import hu.itguruk.allaskeresoportal.repository.MunkaltatoRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,39 +22,41 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/munkaltato")
-public class MunkaltatoController {
+@RequestMapping("/baseuser")
+public class BaseUserController {
+
 
   @Autowired
-  MunkaltatoRepository munkaltatoRepository;
+  BaseUserRepository baseUserRepository;
 
   @Autowired
   ModelMapper modelMapper;
 
   @GetMapping("/all")
-  public List<MunkaltatoDTO> getAll() {
-    return munkaltatoRepository.findAll()
+  public List<BaseUserDTO> getAll() {
+    return baseUserRepository.findAll()
         .stream()
-        .map(munkaltato -> modelMapper.map(munkaltato, MunkaltatoDTO.class))
+        .map(baseUser -> modelMapper.map(baseUser, BaseUserDTO.class))
         .collect(Collectors.toList());
   }
 
   @GetMapping("/{id}")
-  public MunkaltatoDTO getOneById(@PathVariable(value = "id") Long id) {
-    return modelMapper.map(munkaltatoRepository.getOne(id),MunkaltatoDTO.class);
+  public BaseUserDTO getOneById(@PathVariable(value = "id") Long id) {
+    return modelMapper.map(baseUserRepository.getOne(id),BaseUserDTO.class);
   }
 
   @PostMapping("/create")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<Munkaltato> saveOrUpdate(@RequestBody MunkaltatoDTO munkaltatoDTO) {
-    Munkaltato munkaltato = modelMapper.map(munkaltatoDTO, Munkaltato.class);
-    return ResponseEntity.ok(munkaltatoRepository.save(munkaltato));
+  public ResponseEntity<BaseUser> saveOrUpdate(@RequestBody BaseUserDTO baseUserDTO) {
+    BaseUser baseUser = modelMapper.map(baseUserDTO, BaseUser.class);
+    return ResponseEntity.ok(baseUserRepository.save(baseUser));
   }
 
   @PutMapping("/update")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<Munkaltato> update(@RequestBody MunkaltatoDTO munkaltatoDTO) {
-    Munkaltato munkaltato = modelMapper.map(munkaltatoDTO, Munkaltato.class);
-    return ResponseEntity.ok(munkaltatoRepository.save(munkaltato));
+  public ResponseEntity<BaseUser> update(@RequestBody BaseUserDTO baseUserDTO) {
+    BaseUser baseUser = modelMapper.map(baseUserDTO, BaseUser.class);
+    return ResponseEntity.ok(baseUserRepository.save(baseUser));
   }
+
 }
