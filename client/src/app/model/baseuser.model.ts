@@ -25,7 +25,7 @@ export const enum County {
   'Zala'
 }
 
-export class BaseUser {
+export class Felhasznalo {
   constructor(
     public id?: number,
     public username?: string,

@@ -3,6 +3,7 @@ import { fadeInAnimation } from '../animations/fade-in.animation';
 import { AllaskeresoService } from '../service/allaskereso.service';
 import { Allaskereso } from '../model/allaskereso.model';
 import { AuthenticationService } from '../auth/authentication.service';
+import { Felhasznalo } from '../model/baseuser.model';
 
 @Component({
   selector: 'app-main-page',
@@ -17,6 +18,7 @@ import { AuthenticationService } from '../auth/authentication.service';
   providers: [AllaskeresoService]
 })
 export class MainPageComponent implements OnInit {
+  bejelentkezettFelhasznalo: Felhasznalo;
   constructor(
     private allaskeresoService: AllaskeresoService,
     private authService: AuthenticationService
@@ -24,6 +26,7 @@ export class MainPageComponent implements OnInit {
   public allaskereso: Allaskereso;
   public allaskeresoJson;
   public principalStatus;
+  public userDetails;
 
   ngOnInit() {}
 
@@ -38,6 +41,8 @@ export class MainPageComponent implements OnInit {
   getUser() {
     if (this.authService.principal) {
       this.principalStatus = JSON.stringify(this.authService.principal);
+      this.bejelentkezettFelhasznalo = this.authService.currentFelhasznalo;
+      this.userDetails = JSON.stringify(this.bejelentkezettFelhasznalo);
     } else {
       this.principalStatus = 'no principal assigned';
     }

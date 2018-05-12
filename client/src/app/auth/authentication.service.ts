@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { SERVER_API_URL } from '../app.constants';
+import { Felhasznalo } from '../model/baseuser.model';
+import { FelhasznaloService } from '../service/felhasznalo.service';
 
 export const ANONYMOUS = 'anonymousUser';
 const WEBSTORAGE_PRINCIPAL = 'allaskereso_user_principal';
@@ -11,7 +13,12 @@ const WEBSTORAGE_PRINCIPAL = 'allaskereso_user_principal';
 export class AuthenticationService {
   public principal: any;
   public _isLoggedIn = new Subject<boolean>();
-  constructor(private http: HttpClient, private router: Router) {}
+  public currentFelhasznalo: Felhasznalo;
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private felhasznaloService: FelhasznaloService
+  ) {}
 
   isLoggedIn(): Promise<boolean> {
     return new Promise((resolve, reject) => {
@@ -66,6 +73,11 @@ export class AuthenticationService {
           this._isLoggedIn.next(true);
           this.principal = response;
           if (this.principal) {
+            this.felhasznaloService
+              .getFelhasznaloByUsername(username)
+              .subscribe(responseFelhasznalo => {
+                this.currentFelhasznalo = responseFelhasznalo;
+              });
             sessionStorage.setItem(
               WEBSTORAGE_PRINCIPAL,
               JSON.stringify(this.principal)
@@ -89,6 +101,7 @@ export class AuthenticationService {
         .get<Response>(SERVER_API_URL + '/logout')
         .toPromise()
         .then(() => {
+          this.currentFelhasznalo = undefined;
           resolve(true);
         })
         .catch(e => {
