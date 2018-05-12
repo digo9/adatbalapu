@@ -1,8 +1,17 @@
+import { Allaskereso } from './allaskereso.model';
+import { Munkaltato } from './munkaltato.model';
+import { Vegzettseg } from './vegzettseg.model';
+
 export class Allasajanlat {
   constructor(
     public id?: number,
-    public elvertVegzettsegek?: String,
-    public ajanlatFeladojaId?: number,
-    public leiras?: String
-  ) {}
+    public jelentkezo?: Allaskereso[],
+    public ajanlatFeladoja?: Munkaltato,
+    public leiras?: String,
+    public fizetes?: number,
+    public vegzettseg?: Vegzettseg[]
+  ) {
+    this.jelentkezo = [];
+    this.vegzettseg = [];
+  }
 }

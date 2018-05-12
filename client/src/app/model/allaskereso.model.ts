@@ -1,3 +1,6 @@
+import { Oneletrajz } from './oneletrajz.model';
+import { Felhasznalo } from './baseuser.model';
+
 export class Allaskereso {
   constructor(
     public id?: number,
@@ -6,7 +9,8 @@ export class Allaskereso {
     public keresztnev?: string,
     public statusz?: string,
     public utolsoBejelentkezes?: Date,
-    public baseUserId?: number,
-    public oneletrajzId?: number
+    public felhasznaloId?: number,
+    public oneletrajz?: Oneletrajz,
+    public felhasznalo?: Felhasznalo
   ) {}
 }

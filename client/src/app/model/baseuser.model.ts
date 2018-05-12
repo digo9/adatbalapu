@@ -1,3 +1,6 @@
+import { Allaskereso } from './allaskereso.model';
+import { Munkaltato } from './munkaltato.model';
+
 export const enum Role {
   ROLE_ADMIN,
   ROLE_USER
@@ -28,11 +31,15 @@ export const enum County {
 export class Felhasznalo {
   constructor(
     public id?: number,
-    public username?: string,
-    public password?: string,
     public email?: string,
-    public role?: Role,
-    public munkaltatoId?: number,
-    public allaskeresoId?: number
-  ) {}
+    public felhasznalonev?: string,
+    public jelszo?: string,
+    public engedelyezve?: number,
+    public roles?: Role[],
+    public allaskeresoId?: number,
+    public munkaltato?: Munkaltato,
+    public allaskereso?: Allaskereso
+  ) {
+    this.roles = [];
+  }
 }

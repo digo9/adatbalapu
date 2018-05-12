@@ -1,9 +1,14 @@
+import { Szekhely } from './szekhely.model';
+import { Felhasznalo } from './baseuser.model';
+
 export class Munkaltato {
   constructor(
     public id?: number,
-    public cegnev?: string,
+    public cegNev?: string,
     public cegLeiras?: string,
-    public szekhelyId?: number,
-    public baseUserId?: number
-  ) {}
+    public szekhely?: Szekhely[],
+    public felhasznalo?: Felhasznalo
+  ) {
+    this.szekhely = [];
+  }
 }

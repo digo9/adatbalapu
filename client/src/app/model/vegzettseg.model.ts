@@ -1,8 +1,11 @@
+import { Allaskereso } from './allaskereso.model';
+
 export class Vegzettseg {
   constructor(
     public id?: number,
-    public userId?: number,
-    public megnevezes?: String,
-    public megszerzesDatuma?: Date
-  ) {}
+    public allaskereso?: Allaskereso[],
+    public megnevezes?: String
+  ) {
+    this.allaskereso = [];
+  }
 }
