@@ -3,6 +3,7 @@ package hu.itguruk.allaskeresoportal.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,11 +16,13 @@ import lombok.Data;
 @Data
 @Entity
 public class Munkaltato {
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "munkaltato_seq")
   @SequenceGenerator(name = "munkaltato_seq", sequenceName = "munkaltato_seq", allocationSize = 1)
   private Long id;
 
+  @Column(name = "nev")
   private String cegNev;
 
   private String cegLeiras;
@@ -29,6 +32,6 @@ public class Munkaltato {
 
   @JsonIgnore
   @OneToOne
-  private BaseUser baseUser;
+  private BaseUser felhasznalo;
 
 }

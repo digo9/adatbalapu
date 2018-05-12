@@ -13,8 +13,11 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['ujajanlat']">Új hirdetés feladása</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['bejelentkezes']">Bejelentkezés</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLinkActive="active" (click)="logout()">Kijelentkezés</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['regisztracio']">Regisztráció</a>

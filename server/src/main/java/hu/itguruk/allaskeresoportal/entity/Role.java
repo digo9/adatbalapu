@@ -27,7 +27,7 @@ public class Role implements Serializable {
     private String label;
 
     @ManyToMany
-    Set<BaseUser> baseUsers;
+    Set<BaseUser> felhasznalo;
 
     public Role(String label) {
         this.label = label;

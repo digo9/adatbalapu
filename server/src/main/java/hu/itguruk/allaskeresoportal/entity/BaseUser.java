@@ -9,7 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import lombok.NoArgsConstructor;
 
-@Entity()
+@Entity(name = "felhasznalo")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,28 +23,18 @@ public class BaseUser {
 
     @NotNull
     @Column(nullable = false, unique = true)
-    private String username;
+    private String felhasznalonev;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     @NotNull
-    private String password;
+    private String jelszo;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    private Boolean enabled;
-
-//    @JsonIgnore
-//    public String getPassword() {
-//        return this.password;
-//    }
-//
-//    @JsonProperty
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
+    private Boolean engedelyezve;
 
     @OneToOne(cascade = {CascadeType.REMOVE})
     private Munkaltato munkaltato;

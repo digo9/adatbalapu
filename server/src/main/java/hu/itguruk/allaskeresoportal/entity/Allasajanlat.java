@@ -1,6 +1,7 @@
 package hu.itguruk.allaskeresoportal.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
 import javax.persistence.SequenceGenerator;
@@ -25,8 +26,6 @@ public class Allasajanlat implements Serializable {
   @SequenceGenerator(sequenceName = "ALLASAJANL_SEQ", allocationSize = 1, name = "AllasajanlSeq", initialValue = 30)
   private Long id;
 
-  private String elvartVegzettsegek;
-
   @ManyToMany(cascade = {CascadeType.REMOVE})
   private List<Allaskereso> jelentkezo;
 
@@ -35,4 +34,9 @@ public class Allasajanlat implements Serializable {
 
   @Size(max = 2000)
   private String leiras;
+
+  @ManyToMany
+  private List<Vegzettseg> vegzettseg;
+
+  private BigDecimal fizetes;
 }
