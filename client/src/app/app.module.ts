@@ -26,6 +26,7 @@ import { HttpClientResponseInterceptor } from './utils/interceptors/httpclient.r
 import { Page403Component } from './error-pages/page-403/page-403.component';
 import { Page401Component } from './error-pages/page-401/page-401.component';
 import { FelhasznaloService } from './service/felhasznalo.service';
+import { AllasajanlatService } from './service/allasajanlat.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { FelhasznaloService } from './service/felhasznalo.service';
     HttpClientModule
   ],
   providers: [
+    AllasajanlatService,
     AllaskeresoService,
     FelhasznaloService,
     AuthenticationService,
@@ -70,4 +72,4 @@ import { FelhasznaloService } from './service/felhasznalo.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
