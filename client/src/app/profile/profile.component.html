@@ -1,0 +1,84 @@
+<div class="container">
+  <h1>
+    Profil szerkesztése {{bejelentkezettFelhasznalo.felhasznalonev}}
+  </h1>
+
+  <form>
+
+    <!-- Allaskereso fields-->
+    <div *ngIf="bejelentkezettFelhasznalo.allaskereso">
+      <div class="form-group">
+        <label for="vezeteknev">Vezetéknév</label>
+        <input type="text" class="form-control" id="vezeteknev" name="vezeteknev" [(ngModel)]="bejelentkezettFelhasznalo.allaskereso.vezeteknev"
+          placeholder="bejelentkezettFelhasznalo.allaskereso.vezeteknev">
+      </div>
+      <div class="form-group">
+        <label for="keresztnev">Keresztnév</label>
+        <input type="text" class="form-control" id="keresztnev" name="keresztnev" [(ngModel)]="bejelentkezettFelhasznalo.allaskereso.keresztnev"
+          placeholder="bejelentkezettFelhasznalo.allaskereso.keresztnev">
+      </div>
+      <div class="form-group">
+        <label for="elerhetoseg">Elérhetőség</label>
+        <input type="text" class="form-control" id="elerhetoseg" name="elerhetoseg" [(ngModel)]="bejelentkezettFelhasznalo.allaskereso.elerhetoseg"
+          placeholder="bejelentkezettFelhasznalo.allaskereso.elerhetoseg">
+      </div>
+      <div *ngIf="bejelentkezettFelhasznalo.allaskereso.oneletrajz">
+        <h2>Önéletrajz</h2>
+
+        <div class="form-group">
+          <label for="nyelvek">Beszélt nyelvek</label>
+          <select class="custom-select mr-sm-2" id="nyelvek" [(ngModel)]="bejelentkezettFelhasznalo.allaskereso.oneletrajz.nyelv">
+            <option selected value="Angol">Angol</option>
+            <option value="Magyar">Magyar</option>
+            <option value="Német">Német</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="leiras">Bemutatkozás/ rövid leírás (max 2000 karakter)</label>
+          <textarea rows="4" cols="50" maxlength="2000" class="form-control" id="leiras" [(ngModel)]="bejelentkezettFelhasznalo.allaskereso.oneletrajz.leiras"
+            placeholder="bejelentkezettFelhasznalo.munkaltato.oneletrajz.leiras"></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Munkaltato fields-->
+    <div *ngIf="bejelentkezettFelhasznalo.munkaltato">
+      <div class="form-group">
+        <label for="cegNev">Cég neve</label>
+        <input type="text" class="form-control" id="cegNev" name="cegNev" [(ngModel)]="bejelentkezettFelhasznalo.munkaltato.cegNev"
+          placeholder="bejelentkezettFelhasznalo.munkaltato.cegNev">
+      </div>
+      <div class="form-group">
+        <label for="cegLeiras">Leírás</label>
+        <input type="text" class="form-control" id="cegLeiras" name="cegLeiras" [(ngModel)]="bejelentkezettFelhasznalo.munkaltato.cegLeiras"
+          placeholder="bejelentkezettFelhasznalo.munkaltato.cegLeiras">
+      </div>
+      <div class="form-group">
+        <label for="szekhely">Székhely</label>
+        <input type="text" class="form-control" id="szekhely" name="szekhely" [(ngModel)]="bejelentkezettFelhasznalo.munkaltato.szekhely"
+          placeholder="bejelentkezettFelhasznalo.munkaltato.szekhely">
+      </div>
+    </div>
+
+    <!-- Global fields-->
+    <div class="form-group">
+      <label for="felhasznalonev">Felhasználónév</label>
+      <input type="text" class="form-control" id="felhasznalonev" name="felhasznalonev" [(ngModel)]="bejelentkezettFelhasznalo.felhasznalonev"
+        placeholder="bejelentkezettFelhasznalo.felhasznalonev">
+    </div>
+    <div class="form-group">
+      <label for="email">E-mail cím</label>
+      <input type="text" class="form-control" id="email" name="email" [(ngModel)]="bejelentkezettFelhasznalo.email" placeholder="bejelentkezettFelhasznalo.email">
+    </div>
+    <div class="form-group">
+      <label for="jelszo">Jelszó</label>
+      <input type="password" class="form-control" id="jelszo" name="jelszo" [(ngModel)]="bejelentkezettFelhasznalo.jelszo" placeholder="bejelentkezettFelhasznalo.jelszo">
+    </div>
+
+    <div>
+      <button (click)="submitForm()" class="btn btn-primary">Módosítás</button>
+    </div>
+  </form>
+
+</div>

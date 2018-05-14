@@ -6,6 +6,7 @@ import { UsersComponent } from './users/users.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { JobComponent } from './job/job.component';
+import { ProfilComponent } from './profile/profile.component';
 import { FindJobsComponent } from './find-jobs/find-jobs.component';
 import { NewOfferComponent } from './new-offer/new-offer.component';
 import { Page403Component } from './error-pages/page-403/page-403.component';
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'fooldal', component: MainPageComponent },
   { path: 'regisztracio', component: RegistrationComponent },
   { path: 'bejelentkezes', component: LoginComponent },
+  { path: 'profil', component: ProfilComponent },
   { path: 'allasajanlat', component: JobComponent },
   { path: 'allaskereses', component: FindJobsComponent },
   { path: 'ujajanlat', component: NewOfferComponent },
@@ -29,4 +31,4 @@ const appRoutes: Routes = [
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
-export class AppRouting {}
+export class AppRouting { }
