@@ -21,8 +21,8 @@ public class BaseUserDTO {
 
   private boolean engedelyezve;
 
-  private MunkaltatoDTO munkaltatoDTO;
+  private Munkaltato munkaltato;
 
-  private AllaskeresoDTO allaskeresoDTO;
+  private Allaskereso allaskereso;
 
 }

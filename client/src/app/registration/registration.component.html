@@ -19,11 +19,12 @@
     <!-- global -->
     <div class="form-group">
       <label for="felhasznalonev">Felhasználónév</label>
-      <input type="text" class="form-control" id="felhasznalonev" name="felhasznalonev" [(ngModel)]="felhasznalo.felhasznalonev">
+      <input type="text" class="form-control" id="felhasznalonev" name="felhasznalonev" [(ngModel)]="felhasznalo.felhasznalonev"
+        required>
     </div>
     <div class="form-group">
       <label for="jelszo">Jelszó</label>
-      <input type="password" class="form-control" id="jelszo" name="jelszo" [(ngModel)]="felhasznalo.jelszo">
+      <input type="password" class="form-control" id="jelszo" name="jelszo" [(ngModel)]="felhasznalo.jelszo" required>
     </div>
     <!--  -->
 
@@ -51,7 +52,7 @@
     <!-- global -->
     <div class="form-group">
       <label for="email">E-mail cím</label>
-      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="felhasznalo.email">
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="felhasznalo.email" required>
     </div>
     <!--  -->
 
