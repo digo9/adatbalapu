@@ -27,6 +27,8 @@ import { Page403Component } from './error-pages/page-403/page-403.component';
 import { Page401Component } from './error-pages/page-401/page-401.component';
 import { FelhasznaloService } from './service/felhasznalo.service';
 import { AllasajanlatService } from './service/allasajanlat.service';
+import { ProfilComponent } from './profile/profile.component';
+import { MunkaltatoService } from './service/munkaltato.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { AllasajanlatService } from './service/allasajanlat.service';
     JobComponent,
     NewOfferComponent,
     Page403Component,
-    Page401Component
+    Page401Component,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import { AllasajanlatService } from './service/allasajanlat.service';
     AllaskeresoService,
     FelhasznaloService,
     AuthenticationService,
+    MunkaltatoService,
     HttpClientResponseInterceptorService,
     {
       provide: HTTP_INTERCEPTORS,
