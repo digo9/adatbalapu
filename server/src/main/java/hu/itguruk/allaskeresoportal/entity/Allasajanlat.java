@@ -26,6 +26,8 @@ public class Allasajanlat implements Serializable {
   @SequenceGenerator(sequenceName = "ALLASAJANL_SEQ", allocationSize = 1, name = "AllasajanlSeq", initialValue = 30)
   private Long id;
 
+  private String megnevezes;
+  
   @ManyToMany(cascade = {CascadeType.REMOVE})
   private List<Allaskereso> jelentkezo;
 

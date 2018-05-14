@@ -2,25 +2,26 @@
   <h1>
     Új állásajánlat létrehozása
   </h1>
+  <form>
+    <div class="form-group">
+      <label for="megnevezes">Meghirdetendő munkakör megnevezése</label>
+      <input type="text" class="form-control" id="megnevezes" name="megnevezes" [(ngModel)]="allasajanlat.megnevezes">
+    </div>
+    <div class="form-group">
+      <label for="leiras">Munkakör leírása</label>
+      <textarea class="form-control" rows="5" class="form-control" id="leiras" name="leiras" [(ngModel)]="allasajanlat.leiras"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="vegzettseg">Elvárt végzettségek</label>
+      <input type="text" class="form-control" id="vegzettseg" name="vegzettseg" [(ngModel)]="allasajanlat.vegzettseg">
+    </div>
+    <div class="form-group">
+      <label for="fizetes">Kínált fizetés</label>
+      <input type="text" class="form-control" id="fizetes" name="fizetes" [(ngModel)]="allasajanlat.fizetes">
+    </div>
 
-  <div class="form-group">
-    <label for="jobName">Meghirdetendő munkakör megnevezése</label>
-    <input type="text" class="form-control" id="jobName">
-  </div>
-  <div class="form-group">
-    <label for="description">Munkakör leírása</label>
-    <textarea class="form-control" rows="5" class="form-control" id="description"></textarea>
-  </div>
-  <div class="form-group">
-    <label for="companyName">Feladatok felsorolása</label>
-    <textarea class="form-control" rows="5" class="form-control" id="companyName"></textarea>
-  </div>
-  <div class="form-group">
-    <label for="expectedSkill">Elvárt végzettségek</label>
-    <input type="text" class="form-control" id="expectedSkill">
-  </div>
-
-  <div>
-    <button type="button" class="btn btn-primary" (click)="c('Close click')">Létrehozás</button>
-  </div>
+    <div>
+      <button (click)="submitForm()" class="btn btn-primary">Hirdetés feladása</button>
+    </div>
+  </form>
 </div>

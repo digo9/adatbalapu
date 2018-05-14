@@ -10,6 +10,8 @@ import java.util.List;
 public class AllasajanlatDTO {
 
     private Long id;
+    
+    private String megnevezes;
 
     private List<AllaskeresoDTO> jelentkezoDTOList;
 
