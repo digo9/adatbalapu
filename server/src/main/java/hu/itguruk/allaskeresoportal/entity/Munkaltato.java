@@ -18,8 +18,9 @@ import lombok.Data;
 public class Munkaltato {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "munkaltato_seq")
-  @SequenceGenerator(name = "munkaltato_seq", sequenceName = "munkaltato_seq", allocationSize = 1)
+//  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "munkaltato_seq")
+//  @SequenceGenerator(name = "munkaltato_seq", sequenceName = "munkaltato_seq", allocationSize = 1)
+  @GeneratedValue
   private Long id;
 
   @Column(name = "nev")

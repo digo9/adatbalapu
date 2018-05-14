@@ -24,8 +24,9 @@ import lombok.Data;
 public class Allaskereso {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "allaskereso_seq")
-  @SequenceGenerator(name = "allaskereso_seq", sequenceName = "allaskereso_seq", allocationSize = 1)
+//  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "allaskereso_seq")
+//  @SequenceGenerator(name = "allaskereso_seq", sequenceName = "allaskereso_seq", allocationSize = 1, initialValue = 30)
+  @GeneratedValue
   private Long id;
 
   private String vezeteknev;
@@ -40,7 +41,7 @@ public class Allaskereso {
 
   private Date utolsoBejelentkezes;
 
-  @OneToOne(cascade = {CascadeType.REMOVE})
+  @OneToOne(cascade = {CascadeType.ALL})
   private Oneletrajz oneletrajz;
 
   @JsonIgnore

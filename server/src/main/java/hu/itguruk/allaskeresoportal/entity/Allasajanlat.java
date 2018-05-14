@@ -22,8 +22,9 @@ import javax.validation.constraints.Size;
 public class Allasajanlat implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AllasajanlSeq")
-  @SequenceGenerator(sequenceName = "ALLASAJANL_SEQ", allocationSize = 1, name = "AllasajanlSeq", initialValue = 30)
+//  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AllasajanlSeq")
+//  @SequenceGenerator(sequenceName = "ALLASAJANL_SEQ", allocationSize = 1, name = "AllasajanlSeq", initialValue = 30)
+  @GeneratedValue
   private Long id;
 
   private String megnevezes;

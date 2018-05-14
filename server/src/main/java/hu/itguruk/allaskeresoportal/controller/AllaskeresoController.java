@@ -4,6 +4,7 @@ package hu.itguruk.allaskeresoportal.controller;
 import hu.itguruk.allaskeresoportal.dto.AllaskeresoDTO;
 import hu.itguruk.allaskeresoportal.entity.Allaskereso;
 import hu.itguruk.allaskeresoportal.repository.AllaskeresoRepository;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
@@ -44,15 +45,14 @@ public class AllaskeresoController {
 
   @PostMapping("/create")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<Allaskereso> saveOrUpdate(@RequestBody AllaskeresoDTO allaskeresoDTO) {
-    Allaskereso allaskereso = modelMapper.map(allaskeresoDTO, Allaskereso.class);
+  public ResponseEntity<Allaskereso> saveOrUpdate(@RequestBody Allaskereso allaskereso) {
+    allaskereso.setUtolsoBejelentkezes(new Date());
     return ResponseEntity.ok(allaskeresoRepository.save(allaskereso));
   }
 
   @PutMapping("/update")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<Allaskereso> update(@RequestBody  AllaskeresoDTO allaskeresoDTO) {
-    Allaskereso vegzettseg = modelMapper.map(allaskeresoDTO, Allaskereso.class);
-    return ResponseEntity.ok(allaskeresoRepository.save(vegzettseg));
+  public ResponseEntity<Allaskereso> update(@RequestBody Allaskereso allaskereso) {
+    return ResponseEntity.ok(allaskeresoRepository.save(allaskereso));
   }
 }

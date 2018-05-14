@@ -124,11 +124,12 @@
     </div>
     <div class="form-group">
       <label for="contact">Bemutatkozás/ rövid leírás (max 2000 karakter)</label>
-      <textarea rows="4" cols="50" maxlength="2000" class="form-control" id="companyDescription"></textarea>
+      <textarea rows="4" cols="50" maxlength="2000" class="form-control" id="companyDescription" [(ngModel)]="oneletrajz.leiras"></textarea>
     </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-primary" (click)="c('Close click')">Mentés</button>
     <button type="button" class="btn btn-danger" (click)="c('Close click')">Mégsem</button>
   </div>
+  <ngb-alert *ngIf="errorMessage" type="danger" (close)="!errorMessage">Hiba történt a regisztráció során!</ngb-alert>
 </ng-template>

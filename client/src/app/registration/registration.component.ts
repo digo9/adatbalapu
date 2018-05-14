@@ -6,6 +6,9 @@ import { Felhasznalo } from '../model/baseuser.model';
 import { Allaskereso } from '../model/allaskereso.model';
 import { Oneletrajz } from '../model/oneletrajz.model';
 import { Vegzettseg } from '../model/vegzettseg.model';
+import { AllaskeresoService } from '../service/allaskereso.service';
+import { Subject } from 'rxjs/Subject';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-registration',
@@ -18,22 +21,50 @@ export class RegistrationComponent implements OnInit {
   felhasznalo: Felhasznalo;
   munkaltato: Munkaltato;
   public allaskereso: Allaskereso;
-  oneletrajz: Oneletrajz;
-  vegzettsegek: Vegzettseg[] = [];
-  szekhely: Szekhely;
+  public oneletrajz: Oneletrajz;
+  public vegzettsegek: Vegzettseg[] = [];
+  public szekhely: Szekhely;
   success: boolean;
+  public errorMessage = false;
+  private _error = new Subject<boolean>();
 
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private allaskeresoService: AllaskeresoService
+  ) {
+    this.allaskereso = new Allaskereso();
+    this.oneletrajz = new Oneletrajz();
+    this.szekhely = new Szekhely();
+  }
 
   ngOnInit() {
     this.clearAll();
+    this._error.subscribe(
+      isErrorMessage => (this.errorMessage = isErrorMessage)
+    );
+    this._error
+      .pipe(debounceTime(5000))
+      .subscribe(() => (this.errorMessage = false));
   }
 
   public submitForm() {
     console.log('form submitted');
     console.log('Felhasznalo: ', this.felhasznalo);
-    console.log('Munkaltato : ', this.felhasznalo);
-    console.log('Szekhely: ', this.felhasznalo);
+    console.log('Munkaltato : ', this.munkaltato);
+    console.log('Szekhely: ', this.szekhely);
+    console.log('allaskereso: ', this.allaskereso);
+    console.log('Oneletrajz: ', this.oneletrajz);
+    this.allaskereso.felhasznalo = this.felhasznalo;
+    this.allaskereso.oneletrajz = this.oneletrajz;
+    this.allaskeresoService.createAllaskereso(this.allaskereso).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+        this._error.next(true);
+      }
+    );
     // User registration
     if (this.profileType === 0) {
     } else {

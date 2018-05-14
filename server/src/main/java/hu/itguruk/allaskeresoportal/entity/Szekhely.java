@@ -12,8 +12,9 @@ import lombok.Data;
 public class Szekhely {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SekhelySeq")
-  @SequenceGenerator(sequenceName = "SZEKHELY_SEQ", allocationSize = 1, name = "SekhelySeq", initialValue = 30)
+//  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SekhelySeq")
+//  @SequenceGenerator(sequenceName = "SZEKHELY_SEQ", allocationSize = 1, name = "SekhelySeq", initialValue = 30)
+  @GeneratedValue
   private Long id;
 
   private String megye;

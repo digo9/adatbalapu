@@ -17,8 +17,9 @@ import lombok.Data;
 public class Oneletrajz {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "OneletrajzSeq")
-  @SequenceGenerator(sequenceName = "ONELETRAJZ_SEQ", allocationSize = 1, name = "OneletrajzSeq", initialValue = 30)
+//  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "OneletrajzSeq")
+//  @SequenceGenerator(sequenceName = "ONELETRAJZ_SEQ", allocationSize = 1, name = "OneletrajzSeq", initialValue = 30)
+  @GeneratedValue
   private Long id;
 
   @Size(max = 30)

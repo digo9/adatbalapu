@@ -22,8 +22,9 @@ import lombok.Data;
 public class Vegzettseg {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VegzettsegSeq")
-  @SequenceGenerator(sequenceName = "VEGZETTSEG_SEQ", allocationSize = 1, name = "VegzettsegSeq", initialValue = 30)
+//  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VegzettsegSeq")
+//  @SequenceGenerator(sequenceName = "VEGZETTSEG_SEQ", allocationSize = 1, name = "VegzettsegSeq", initialValue = 30)
+  @GeneratedValue
   private Long id;
 
   @ManyToMany
