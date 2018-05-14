@@ -4,9 +4,11 @@ import hu.itguruk.allaskeresoportal.service.UserServiceImpl;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -35,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   private static final String LOGIN_URL = "/login";
   private static final String LOGOUT_URL = "/logout";
   private static final String ERROR_PAGE_URL = "/errorPage";
+  private static final String H2_CONSOLE_URL = "/console";
 
 
   @Override
@@ -44,10 +47,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // @formatter:off
     http.csrf().disable()
         .cors().and().authorizeRequests();
-    http.authorizeRequests()
-        .anyRequest().authenticated()
+    http.authorizeRequests().antMatchers(HttpMethod.GET, H2_CONSOLE_URL).permitAll()
         .and().formLogin().loginPage(ERROR_PAGE_URL).loginProcessingUrl(LOGIN_URL).successForwardUrl(SECURE_URL).failureForwardUrl(ERROR_PAGE_URL)
         .and().logout().logoutUrl(LOGOUT_URL).logoutSuccessHandler((new HttpStatusReturningLogoutSuccessHandler(HttpStatus.NO_CONTENT)));
+
+    http.headers().frameOptions().disable();
     // @formatter:on
   }
 
@@ -61,6 +65,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .usersByUsernameQuery(USERS_QUERY)
         .authoritiesByUsernameQuery(AUTHORITIES_QUERY);
 //    auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
+  }
+
+  @Override
+  public void configure(WebSecurity webSecurity) {
+    webSecurity.ignoring().antMatchers(H2_CONSOLE_URL);
   }
 
 }

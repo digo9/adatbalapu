@@ -11,16 +11,18 @@ public class BaseUserDTO {
 
   private Long id;
 
-  private String username;
+  private String felhasznalonev;
 
   private String email;
 
-  private String password;
+  private String jelszo;
 
   private Set<Role> roles;
 
-  private Munkaltato munkaltato;
+  private boolean engedelyezve;
 
-  private Allaskereso allaskereso;
+  private MunkaltatoDTO munkaltatoDTO;
+
+  private AllaskeresoDTO allaskeresoDTO;
 
 }

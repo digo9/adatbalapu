@@ -11,4 +11,6 @@ public class OneletrajzDTO {
 
     private String leiras;
 
+    private AllaskeresoDTO allaskeresoDTO;
+
 }

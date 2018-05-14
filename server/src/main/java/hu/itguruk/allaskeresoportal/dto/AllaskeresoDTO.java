@@ -11,9 +11,9 @@ public class AllaskeresoDTO {
 
     private Long id;
 
-    private String nev;
+    private String vezeteknev;
 
-    private Role role;
+    private String keresztnev;
 
     private String elerhetoseg;
 
@@ -21,6 +21,8 @@ public class AllaskeresoDTO {
 
     private Date utolsoBejelentkezes;
 
-    private Oneletrajz oneletrajz;
+    private OneletrajzDTO oneletrajzDTO;
+
+    private BaseUserDTO baseUserDTO;
 
 }

@@ -11,6 +11,4 @@ public class VegzettsegDTO {
 
     private String megnevezes;
 
-    private int megszerzesDatuma;
-
 }
