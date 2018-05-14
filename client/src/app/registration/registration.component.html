@@ -104,6 +104,8 @@
     <button *ngIf="profileType == 0" class="btn btn-outline-primary" (click)="open(content)">Önéletrajt kitöltése</button>
     <button (click)="submitForm()" class="btn btn-primary">Regisztráció</button>
   </form>
+  <ngb-alert *ngIf="errorMessage" type="danger" (close)="!errorMessage">Hiba történt a regisztráció során!</ngb-alert>
+  <ngb-alert *ngIf="successMessage" type="success" (close)="!successMessage">Sikeres mentés!</ngb-alert>
 </div>
 
 <ng-template #content let-c="close" let-d="dismiss">
@@ -131,5 +133,4 @@
     <button type="button" class="btn btn-primary" (click)="c('Close click')">Mentés</button>
     <button type="button" class="btn btn-danger" (click)="c('Close click')">Mégsem</button>
   </div>
-  <ngb-alert *ngIf="errorMessage" type="danger" (close)="!errorMessage">Hiba történt a regisztráció során!</ngb-alert>
 </ng-template>

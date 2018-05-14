@@ -26,7 +26,9 @@ export class RegistrationComponent implements OnInit {
   public szekhely: Szekhely;
   success: boolean;
   public errorMessage = false;
+  public successMessage = false;
   private _error = new Subject<boolean>();
+  private _success = new Subject<boolean>();
 
   constructor(
     private modalService: NgbModal,
@@ -39,12 +41,15 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.clearAll();
-    this._error.subscribe(
-      isErrorMessage => (this.errorMessage = isErrorMessage)
-    );
+    this._error.subscribe(isMessage => (this.errorMessage = isMessage));
     this._error
       .pipe(debounceTime(5000))
       .subscribe(() => (this.errorMessage = false));
+
+    this._success.subscribe(isMessage => (this.successMessage = isMessage));
+    this._success
+      .pipe(debounceTime(5000))
+      .subscribe(() => (this.successMessage = false));
   }
 
   public submitForm() {
@@ -59,6 +64,7 @@ export class RegistrationComponent implements OnInit {
     this.allaskeresoService.createAllaskereso(this.allaskereso).subscribe(
       res => {
         console.log(res);
+        this._success.next(true);
       },
       err => {
         console.log(err);
