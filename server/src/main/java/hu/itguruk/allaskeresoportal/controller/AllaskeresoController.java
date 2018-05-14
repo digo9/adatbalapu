@@ -47,6 +47,7 @@ public class AllaskeresoController {
   @ResponseStatus(value = HttpStatus.OK)
   public ResponseEntity<Allaskereso> saveOrUpdate(@RequestBody Allaskereso allaskereso) {
     allaskereso.setUtolsoBejelentkezes(new Date());
+    allaskereso.getFelhasznalo().setEngedelyezve(true);
     return ResponseEntity.ok(allaskeresoRepository.save(allaskereso));
   }
 
