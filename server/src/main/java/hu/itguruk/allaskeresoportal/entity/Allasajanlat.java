@@ -29,10 +29,10 @@ public class Allasajanlat implements Serializable {
 
   private String megnevezes;
   
-  @ManyToMany(cascade = {CascadeType.REMOVE})
+  @ManyToMany(cascade = {CascadeType.ALL})
   private List<Allaskereso> jelentkezo;
 
-  @ManyToOne(cascade = {CascadeType.REMOVE})
+  @ManyToOne(cascade = {CascadeType.ALL})
   private Munkaltato ajanlatFeladoja;
 
   @Size(max = 2000)

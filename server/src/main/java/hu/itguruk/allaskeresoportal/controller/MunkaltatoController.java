@@ -43,15 +43,13 @@ public class MunkaltatoController {
 
   @PostMapping("/create")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<Munkaltato> saveOrUpdate(@RequestBody MunkaltatoDTO munkaltatoDTO) {
-    Munkaltato munkaltato = modelMapper.map(munkaltatoDTO, Munkaltato.class);
+  public ResponseEntity<Munkaltato> saveOrUpdate(@RequestBody Munkaltato munkaltato) {
     return ResponseEntity.ok(munkaltatoRepository.save(munkaltato));
   }
 
   @PutMapping("/update")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<Munkaltato> update(@RequestBody MunkaltatoDTO munkaltatoDTO) {
-    Munkaltato munkaltato = modelMapper.map(munkaltatoDTO, Munkaltato.class);
+  public ResponseEntity<Munkaltato> update(@RequestBody Munkaltato munkaltato) {
     return ResponseEntity.ok(munkaltatoRepository.save(munkaltato));
   }
 }

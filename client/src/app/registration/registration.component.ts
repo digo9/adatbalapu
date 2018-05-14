@@ -9,6 +9,7 @@ import { Vegzettseg } from '../model/vegzettseg.model';
 import { AllaskeresoService } from '../service/allaskereso.service';
 import { Subject } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operators';
+import { MunkaltatoService } from '../service/munkaltato.service';
 
 @Component({
   selector: 'app-registration',
@@ -32,7 +33,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private allaskeresoService: AllaskeresoService
+    private allaskeresoService: AllaskeresoService,
+    private munkaltatoService: MunkaltatoService
   ) {
     this.allaskereso = new Allaskereso();
     this.oneletrajz = new Oneletrajz();
@@ -59,22 +61,36 @@ export class RegistrationComponent implements OnInit {
     console.log('Szekhely: ', this.szekhely);
     console.log('allaskereso: ', this.allaskereso);
     console.log('Oneletrajz: ', this.oneletrajz);
-    this.allaskereso.felhasznalo = this.felhasznalo;
-    this.allaskereso.oneletrajz = this.oneletrajz;
-    this.allaskeresoService.createAllaskereso(this.allaskereso).subscribe(
-      res => {
-        console.log(res);
-        this._success.next(true);
-      },
-      err => {
-        console.log(err);
-        this._error.next(true);
-      }
-    );
-    // User registration
+
     if (this.profileType === 0) {
+      this.allaskereso.felhasznalo = this.felhasznalo;
+      this.allaskereso.oneletrajz = this.oneletrajz;
+      this.allaskeresoService.createAllaskereso(this.allaskereso).subscribe(
+        res => {
+          console.log(res);
+          this._success.next(true);
+          this.clearAll();
+        },
+        err => {
+          console.log(err);
+          this._error.next(true);
+        }
+      );
     } else {
+      this.munkaltato.szekhely = [];
       this.munkaltato.szekhely.push(this.szekhely);
+      this.munkaltato.felhasznalo = this.felhasznalo;
+      this.munkaltatoService.createMunkaltato(this.munkaltato).subscribe(
+        res => {
+          console.log(res);
+          this._success.next(true);
+          this.clearAll();
+        },
+        err => {
+          console.log(err);
+          this._error.next(true);
+        }
+      );
     }
   }
 
@@ -93,6 +109,7 @@ export class RegistrationComponent implements OnInit {
     this.felhasznalo = {};
     this.munkaltato = {};
     this.szekhely = {};
+    this.allaskereso = {};
   }
 
   private getDismissReason(reason: any): string {

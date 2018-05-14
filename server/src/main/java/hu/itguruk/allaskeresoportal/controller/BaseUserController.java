@@ -49,15 +49,13 @@ public class BaseUserController {
 
   @PostMapping("/create")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<BaseUser> saveOrUpdate(@RequestBody BaseUserDTO baseUserDTO) {
-    BaseUser baseUser = modelMapper.map(baseUserDTO, BaseUser.class);
+  public ResponseEntity<BaseUser> saveOrUpdate(@RequestBody BaseUser baseUser) {
     return ResponseEntity.ok(baseUserRepository.save(baseUser));
   }
 
   @PutMapping("/update")
   @ResponseStatus(value = HttpStatus.OK)
-  public ResponseEntity<BaseUser> update(@RequestBody BaseUserDTO baseUserDTO) {
-    BaseUser baseUser = modelMapper.map(baseUserDTO, BaseUser.class);
+  public ResponseEntity<BaseUser> update(@RequestBody BaseUser baseUser) {
     return ResponseEntity.ok(baseUserRepository.save(baseUser));
   }
 

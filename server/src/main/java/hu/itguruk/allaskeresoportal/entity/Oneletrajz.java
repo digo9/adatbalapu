@@ -28,7 +28,7 @@ public class Oneletrajz {
   @Size(max = 2000)
   private String leiras;
 
-  @OneToOne(cascade = {CascadeType.REMOVE})
+  @OneToOne(cascade = {CascadeType.ALL})
   private Allaskereso allaskeso;
 
 }

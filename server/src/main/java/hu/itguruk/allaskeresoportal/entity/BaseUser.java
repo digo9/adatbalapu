@@ -1,5 +1,6 @@
 package hu.itguruk.allaskeresoportal.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -37,10 +38,12 @@ public class BaseUser {
 
     private Boolean engedelyezve;
 
-    @OneToOne(cascade = {CascadeType.REMOVE})
+    @JsonIgnore
+    @OneToOne(cascade = {CascadeType.ALL})
     private Munkaltato munkaltato;
 
-    @OneToOne(cascade = {CascadeType.REMOVE})
+    @JsonIgnore
+    @OneToOne(cascade = {CascadeType.ALL})
     private Allaskereso allaskereso;
 
 }

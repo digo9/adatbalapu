@@ -44,8 +44,7 @@ public class Allaskereso {
   @OneToOne(cascade = {CascadeType.ALL})
   private Oneletrajz oneletrajz;
 
-  @JsonIgnore
-  @OneToOne
-  private BaseUser falhasznalo;
+  @OneToOne(cascade = {CascadeType.ALL})
+  private BaseUser felhasznalo;
 
 }

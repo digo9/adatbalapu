@@ -28,7 +28,7 @@ public class Munkaltato {
 
   private String cegLeiras;
 
-  @OneToMany(cascade = {CascadeType.REMOVE})
+  @OneToMany(cascade = {CascadeType.ALL})
   private List<Szekhely> szekhely;
 
   @JsonIgnore

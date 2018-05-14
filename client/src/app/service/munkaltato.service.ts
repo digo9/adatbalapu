@@ -26,7 +26,7 @@ export class MunkaltatoService {
     return this.httpClient.get<Munkaltato>(url, { params: params });
   }
 
-  public createMunkaltatoat(munkaltato: Munkaltato): Observable<Munkaltato> {
+  public createMunkaltato(munkaltato: Munkaltato): Observable<Munkaltato> {
     const url = SERVER_API_URL + this.baseUrl + 'create';
     const params = new HttpParams();
 
