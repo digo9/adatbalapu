@@ -31,8 +31,16 @@ export class FindJobsComponent implements OnInit {
           console.log(data);
           this.allasajanlatok.push();
         });
-      },
-    );
+      });
+
+    this.allasajanlatService.getAllasajanlatById(1).subscribe(
+      (res: any) => {
+        this.jelentkezettAllasajanlatok = res;
+        this.jelentkezettAllasajanlatok.forEach((data) => {
+          console.log(data);
+          this.jelentkezettAllasajanlatok.push();
+        });
+      });
   }
 
   allaskeresoIsLoggedIn() {

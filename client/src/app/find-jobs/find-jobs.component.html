@@ -25,13 +25,13 @@
             <div class="col-md-9 cta-contents">
               <h1 class="cta-title">{{ ajanlat.megnevezes }}</h1>
               <div class="cta-desc">
-                <p *ngIf="ajanlat.ajanlatFeladoja">Feladó: {{ ajanlat.ajanlatFeladoja.cegNev }}</p>
+                <p *ngIf="ajanlat.munkaltato">Feladó: {{ ajanlat.munkaltato.cegNev }}</p>
                 <p>Elvárt végzettség(ek): {{ ajanlat.vegzettseg }}</p>
                 <p>Br. havi fizetés: {{ ajanlat.fizetes }} Ft</p>
               </div>
             </div>
             <div class="col-md-3 cta-button">
-              <a class="btn btn-lg btn-block btn-primary" [routerLink]="['/allasajanlat']">Megnyitás</a>
+              <a class="btn btn-lg btn-block btn-primary" [routerLink]="['/allasajanlat/', ajanlat.id, 'users']">Megnyitás</a>
             </div>
           </div>
         </div>
@@ -40,19 +40,19 @@
 
     <!-- Jelentkezett hirdetesek -->
     <fieldset *ngIf="hirdetesType == 1">
-      <div *ngFor="let ajanlat of jelentkezettAllasajanlatok">
+      <div *ngFor="let jelentkezettAjanlat of jelentkezettAllasajanlatok">
         <div class="bs-calltoaction bs-calltoaction-primary">
           <div class="row">
             <div class="col-md-9 cta-contents">
-              <h1 class="cta-title">{{ ajanlat.megnevezes }}</h1>
+              <h1 class="cta-title">{{ jelentkezettAjanlat.megnevezes }}</h1>
               <div class="cta-desc">
-                <p *ngIf="ajanlat.ajanlatFeladoja">Feladó: {{ ajanlat.ajanlatFeladoja.cegNev }}</p>
-                <p>Elvárt végzettség(ek): {{ ajanlat.vegzettseg }}</p>
-                <p>Br. havi fizetés: {{ ajanlat.fizetes }} Ft</p>
+                <p *ngIf="jelentkezettAjanlat.munkaltato">Feladó: {{ jelentkezettAjanlat.munkaltato.cegNev }}</p>
+                <p>Elvárt végzettség(ek): {{ jelentkezettAjanlat.vegzettseg }}</p>
+                <p>Br. havi fizetés: {{ jelentkezettAjanlat.fizetes }} Ft</p>
               </div>
             </div>
             <div class="col-md-3 cta-button">
-              <a class="btn btn-lg btn-block btn-primary" [routerLink]="['/allasajanlat']">Megnyitás</a>
+              <a class="btn btn-lg btn-block btn-primary" [routerLink]="['/allasajanlat/', jelentkezettAjanlat.id, 'users']">Megnyitás</a>
             </div>
           </div>
         </div>

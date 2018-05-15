@@ -28,9 +28,18 @@ export class JobComponent implements OnInit {
     this.clearAll();
     this.allaskeresoIsLoggedIn();
 
-    this.allasajanlatService.getAllasajanlatById(14).subscribe(res => {
+
+    this.allasajanlatService.getAssignedUsers(1).subscribe(
+      (res: any) => {
+        this.jelentkezettAllaskeresok = res;
+        this.jelentkezettAllaskeresok.forEach((data) => {
+          console.log(data);
+          this.jelentkezettAllaskeresok.push();
+        });
+      });
+    /*this.allasajanlatService.getAllasajanlatById(14).subscribe(res => {
       this.allasajanlat = res;
-    });
+    });*/
   }
 
   allaskeresoIsLoggedIn() {

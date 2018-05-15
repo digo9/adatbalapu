@@ -17,8 +17,8 @@
       <p>br. havi {{allasajanlat.fizetes}} Ft</p>
 
       <h3>A munkáltató adatai:</h3>
-      <p>{{allasajanlat.ajanlatFeladoja.cegNev}}</p>
-      <p>{{allasajanlat.ajanlatFeladoja.szekhely}}</p>
+      <p>{{allasajanlat.munkaltato.cegNev}}</p>
+      <p>{{allasajanlat.munkaltato.szekhely}}</p>
 
       <button type="button" class="btn btn-primary btn-block" *ngIf="isLoggedIn" (click)="allaskeresoJelentkezik()">Jelentkezem!</button>
     </div>
@@ -26,7 +26,7 @@
   </div>
 
   <h2>A hirdetésre jelentkezett személyek:</h2>
-  <!-- Mock start -->
+  <!-- Mock start
   <div class="bs-calltoaction bs-calltoaction-primary">
     <div class="row">
       <div class="col-md-9 cta-contents">
@@ -40,7 +40,7 @@
       </div>
     </div>
   </div>
-  <!-- Mock end -->
+   Mock end -->
   <div *ngIf="jelentkezettAllaskeresok">
     <div *ngFor="let jelentkezettAllaskereso of jelentkezettAllaskeresok">
       <div class="bs-calltoaction bs-calltoaction-primary">
