@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   { path: 'allaskereso/:id/allasajanlatok', component: FindJobsComponent },
   { path: 'allasajanlat/:id/munkaltato', component: JobComponent },
   { path: 'allasajanlat/:id/users', component: JobComponent },
-  { path: 'profil', component: ViewProfileComponent },
+  { path: 'profil/:id', component: ViewProfileComponent },
   { path: '404', component: Page404Component },
   { path: '403', component: Page403Component },
   { path: '401', component: Page401Component },

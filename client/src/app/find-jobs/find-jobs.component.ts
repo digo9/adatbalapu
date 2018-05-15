@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AllasajanlatService } from '../service/allasajanlat.service';
 import { Allasajanlat } from '../model/allasajanlat.model';
 import { AuthenticationService } from '../auth/authentication.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-find-jobs',
@@ -17,7 +18,8 @@ export class FindJobsComponent implements OnInit {
 
   constructor(
     private allasajanlatService: AllasajanlatService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class FindJobsComponent implements OnInit {
         });
       });
 
-    this.allasajanlatService.getAllasajanlatById(1).subscribe(
+    this.allasajanlatService.getAllasajanlatById(this.activatedRoute.snapshot.params.id).subscribe(
       (res: any) => {
         this.jelentkezettAllasajanlatok = res;
         this.jelentkezettAllasajanlatok.forEach((data) => {

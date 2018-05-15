@@ -5,6 +5,7 @@ import { FelhasznaloService } from '../service/felhasznalo.service';
 import { Allaskereso } from '../model/allaskereso.model';
 import { AuthenticationService } from '../auth/authentication.service';
 import { Felhasznalo } from '../model/baseuser.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-job',
@@ -21,15 +22,14 @@ export class JobComponent implements OnInit {
   constructor(
     private allasajanlatService: AllasajanlatService,
     private felhasznaloService: FelhasznaloService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.clearAll();
     this.allaskeresoIsLoggedIn();
-
-
-    this.allasajanlatService.getAssignedUsers(1).subscribe(
+    this.allasajanlatService.getAssignedUsers(this.activatedRoute.snapshot.params.id).subscribe(
       (res: any) => {
         this.jelentkezettAllaskeresok = res;
         this.jelentkezettAllaskeresok.forEach((data) => {
@@ -37,9 +37,11 @@ export class JobComponent implements OnInit {
           this.jelentkezettAllaskeresok.push();
         });
       });
-    /*this.allasajanlatService.getAllasajanlatById(14).subscribe(res => {
+
+    this.allasajanlatService.getAllasajanlatById(this.activatedRoute.snapshot.params.id).subscribe(res => {
       this.allasajanlat = res;
-    });*/
+      console.log(this.allasajanlat.munkaltato.szekhely);
+    });
   }
 
   allaskeresoIsLoggedIn() {

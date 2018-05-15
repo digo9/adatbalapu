@@ -3,6 +3,7 @@ import { FelhasznaloService } from '../../service/felhasznalo.service';
 import { MunkaltatoService } from '../../service/munkaltato.service';
 import { AllaskeresoService } from '../../service/allaskereso.service';
 import { Felhasznalo } from '../../model/baseuser.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-profile',
@@ -16,14 +17,16 @@ export class ViewProfileComponent implements OnInit {
   constructor(
     private felhasznaloService: FelhasznaloService,
     private munkaltatoService: MunkaltatoService,
-    private allaskeresoService: AllaskeresoService
+    private allaskeresoService: AllaskeresoService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.clearAll();
-    this.felhasznaloService.getFelhasznaloById(1).subscribe(res => {
+    this.felhasznaloService.getFelhasznaloById(this.activatedRoute.snapshot.params.id).subscribe(res => {
       this.felhasznalo = res;
     });
+
   }
 
   clearAll() {
