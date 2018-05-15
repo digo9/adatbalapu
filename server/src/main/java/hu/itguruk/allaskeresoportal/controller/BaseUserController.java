@@ -43,8 +43,8 @@ public class BaseUserController {
   }
 
   @GetMapping("/{id}")
-  public BaseUserDTO getOneById(@PathVariable(value = "id") Long id) {
-    return modelMapper.map(baseUserRepository.getOne(id),BaseUserDTO.class);
+  public BaseUser getOneById(@PathVariable(value = "id") Long id) {
+    return baseUserRepository.findOne(id);
   }
 
   @PostMapping("/create")

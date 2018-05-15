@@ -43,7 +43,13 @@ public class AllasajanlatController {
 
     @GetMapping("/{id}")
     public Allasajanlat getOneById(@PathVariable(value = "id") Long id) {
-        return allasajanlatRepository.getOne(id);
+        return allasajanlatRepository.findOne(id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deleteOneById(@PathVariable(value = "id") Long id) {
+        allasajanlatRepository.delete(id);
     }
 
     @PostMapping("/create")

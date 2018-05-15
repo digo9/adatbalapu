@@ -1,6 +1,7 @@
 package hu.itguruk.allaskeresoportal.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +23,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Allaskereso {
+public class Allaskereso implements Serializable {
 
   @Id
 //  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "allaskereso_seq")

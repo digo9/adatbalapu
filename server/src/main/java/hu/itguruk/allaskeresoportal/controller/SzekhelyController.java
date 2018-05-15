@@ -37,8 +37,8 @@ public class SzekhelyController {
   }
 
   @GetMapping("/{id}")
-  public SzekhelyDTO getOneById(@PathVariable(value = "id") Long id) {
-    return modelMapper.map(szekhelyRepository.getOne(id),SzekhelyDTO.class);
+  public Szekhely getOneById(@PathVariable(value = "id") Long id) {
+    return szekhelyRepository.findOne(id);
   }
 
   @PostMapping("/create")

@@ -37,8 +37,8 @@ public class OneletrajzController {
   }
 
   @GetMapping("/{id}")
-  public OneletrajzDTO getOneById(@PathVariable(value = "id") Long id) {
-    return modelMapper.map(oneletrajzRepository.getOne(id),OneletrajzDTO.class);
+  public Oneletrajz getOneById(@PathVariable(value = "id") Long id) {
+    return oneletrajzRepository.getOne(id);
   }
 
   @PostMapping("/create")

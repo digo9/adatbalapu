@@ -37,8 +37,8 @@ public class VegzettsegController {
   }
 
   @GetMapping("/{id}")
-  public VegzettsegDTO getOneById(@PathVariable(value = "id") Long id) {
-    return modelMapper.map(vegzettsegRepository.getOne(id),VegzettsegDTO.class);
+  public Vegzettseg getOneById(@PathVariable(value = "id") Long id) {
+    return vegzettsegRepository.findOne(id);
   }
 
   @PostMapping("/create")
