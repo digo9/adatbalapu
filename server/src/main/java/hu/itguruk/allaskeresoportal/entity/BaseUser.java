@@ -38,12 +38,10 @@ public class BaseUser {
 
     private Boolean engedelyezve;
 
-    @JsonIgnore
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.ALL, CascadeType.REMOVE})
     private Munkaltato munkaltato;
 
-    @JsonIgnore
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.ALL, CascadeType.REMOVE})
     private Allaskereso allaskereso;
 
 }
