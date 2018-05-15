@@ -2,7 +2,9 @@ package hu.itguruk.allaskeresoportal.controller;
 
 
 import hu.itguruk.allaskeresoportal.dto.AllaskeresoDTO;
+import hu.itguruk.allaskeresoportal.entity.Allasajanlat;
 import hu.itguruk.allaskeresoportal.entity.Allaskereso;
+import hu.itguruk.allaskeresoportal.repository.AllasajanlatRepository;
 import hu.itguruk.allaskeresoportal.repository.AllaskeresoRepository;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +28,9 @@ public class AllaskeresoController {
 
   @Autowired
   AllaskeresoRepository allaskeresoRepository;
+
+  @Autowired
+  AllasajanlatRepository allasajanlatRepository;
 
   @Autowired
   ModelMapper modelMapper;
@@ -55,5 +60,10 @@ public class AllaskeresoController {
   @ResponseStatus(value = HttpStatus.OK)
   public ResponseEntity<Allaskereso> update(@RequestBody Allaskereso allaskereso) {
     return ResponseEntity.ok(allaskeresoRepository.save(allaskereso));
+  }
+
+  @GetMapping("/{id}/allasajanlatok")
+  public List<Allasajanlat> assignedUsers(@PathVariable (value = "id") Long id) {
+    return allasajanlatRepository.findByJelentkezos_Id(id);
   }
 }

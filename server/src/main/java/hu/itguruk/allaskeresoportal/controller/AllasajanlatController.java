@@ -4,8 +4,10 @@ import hu.itguruk.allaskeresoportal.dto.AllasajanlatDTO;
 import hu.itguruk.allaskeresoportal.entity.Allasajanlat;
 import hu.itguruk.allaskeresoportal.entity.Allaskereso;
 import hu.itguruk.allaskeresoportal.entity.BaseUser;
+import hu.itguruk.allaskeresoportal.entity.Munkaltato;
 import hu.itguruk.allaskeresoportal.repository.AllasajanlatRepository;
 import hu.itguruk.allaskeresoportal.repository.AllaskeresoRepository;
+import hu.itguruk.allaskeresoportal.repository.MunkaltatoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,9 @@ public class AllasajanlatController {
     @Autowired
     AllaskeresoRepository allaskeresoRepository;
 
+    @Autowired
+    MunkaltatoRepository munkaltatoRepository;
+
     @GetMapping("/all")
     public List<AllasajanlatDTO> getAll() {
         return allasajanlatRepository.findAll()
@@ -37,8 +42,8 @@ public class AllasajanlatController {
     }
 
     @GetMapping("/{id}")
-    public AllasajanlatDTO getOneById(@PathVariable(value = "id") Long id) {
-        return modelMapper.map(allasajanlatRepository.getOne(id),AllasajanlatDTO.class);
+    public Allasajanlat getOneById(@PathVariable(value = "id") Long id) {
+        return allasajanlatRepository.getOne(id);
     }
 
     @PostMapping("/create")
@@ -58,6 +63,11 @@ public class AllasajanlatController {
     @GetMapping("/{id}/users")
     public List<Allaskereso> assignedUsers(@PathVariable (value = "id") Long id) {
        return allaskeresoRepository.findByAllasajanlats_Id(id);
+    }
+
+    @GetMapping("/{id}/munkaltato")
+    public Munkaltato munkaltato(@PathVariable (value = "id") Long id ){
+        return munkaltatoRepository.findByAllasajanlats_id(id);
     }
 
 }

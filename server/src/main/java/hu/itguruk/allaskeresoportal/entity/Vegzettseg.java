@@ -1,6 +1,7 @@
 package hu.itguruk.allaskeresoportal.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -26,6 +27,10 @@ public class Vegzettseg {
 //  @SequenceGenerator(sequenceName = "VEGZETTSEG_SEQ", allocationSize = 1, name = "VegzettsegSeq", initialValue = 30)
   @GeneratedValue
   private Long id;
+
+  @JsonIgnore
+  @ManyToMany(mappedBy = "vegzettsegs")
+  private List<Allasajanlat> allasajanlats = new ArrayList<>();
 
   @ManyToMany
   private List<Allaskereso> allaskereso;

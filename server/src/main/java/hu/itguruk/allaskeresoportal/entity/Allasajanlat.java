@@ -48,7 +48,11 @@ public class Allasajanlat implements Serializable {
   private String leiras;
 
   @ManyToMany(cascade = {CascadeType.ALL})
-  private List<Vegzettseg> vegzettseg;
+  @JoinTable(name = "allasajanlat_vegzettseg",
+      joinColumns = @JoinColumn(name = "allasajanlat_id"),
+      inverseJoinColumns = @JoinColumn(name = "vegzettseg_id")
+  )
+  private List<Vegzettseg> vegzettsegs;
 
   private BigDecimal fizetes;
 }
