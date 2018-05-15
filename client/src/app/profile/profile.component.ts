@@ -10,19 +10,21 @@ import { AllaskeresoService } from '../service/allaskereso.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css', '../app.component.css']
 })
 export class ProfilComponent implements OnInit {
+
   allaskereso: Allaskereso;
   munkaltato: Munkaltato;
   bejelentkezettFelhasznalo: Felhasznalo;
   userDetails: any;
+
   constructor(
     private authService: AuthenticationService,
     private allaskeresoService: AllaskeresoService,
     private munkaltatoService: MunkaltatoService,
     private felhasznaloService: FelhasznaloService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getUser();
@@ -33,7 +35,6 @@ export class ProfilComponent implements OnInit {
       .getFelhasznaloById(this.authService.currentFelhasznalo.id)
       .subscribe(res => {
         this.bejelentkezettFelhasznalo = res;
-        console.log(this.bejelentkezettFelhasznalo);
       });
     // this.bejelentkezettFelhasznalo = this.authService.currentFelhasznalo;
     // this.userDetails = JSON.stringify(this.bejelentkezettFelhasznalo);

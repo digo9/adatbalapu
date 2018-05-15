@@ -1,6 +1,6 @@
 <div class="container">
   <h1>
-    Profil szerkesztése {{bejelentkezettFelhasznalo.felhasznalonev}}
+    Profil szerkesztése
   </h1>
 
   <form>
@@ -22,9 +22,9 @@
         <input type="text" class="form-control" id="elerhetoseg" name="elerhetoseg" [(ngModel)]="bejelentkezettFelhasznalo.allaskereso.elerhetoseg"
           placeholder="bejelentkezettFelhasznalo.allaskereso.elerhetoseg">
       </div>
+
       <div *ngIf="bejelentkezettFelhasznalo.allaskereso.oneletrajz">
         <h2>Önéletrajz</h2>
-
         <div class="form-group">
           <label for="nyelvek">Beszélt nyelvek</label>
           <select class="custom-select mr-sm-2" id="nyelvek" [(ngModel)]="bejelentkezettFelhasznalo.allaskereso.oneletrajz.nyelv">
@@ -38,7 +38,24 @@
           <textarea rows="4" cols="50" maxlength="2000" class="form-control" id="leiras" [(ngModel)]="bejelentkezettFelhasznalo.allaskereso.oneletrajz.leiras"
             placeholder="bejelentkezettFelhasznalo.munkaltato.oneletrajz.leiras"></textarea>
         </div>
+      </div>
 
+      <div *ngIf="!bejelentkezettFelhasznalo.allaskereso.oneletrajz">
+        <h3>Önéletrajt kitöltése</h3>
+        <div class="container">
+          <div class="form-group">
+            <label for="nyelvek">Beszélt nyelvek</label>
+            <select class="custom-select mr-sm-2" id="nyelvek" [(ngModel)]="bejelentkezettFelhasznalo.allaskereso.oneletrajz.nyelv">
+              <option selected value="Angol">Angol</option>
+              <option value="Magyar">Magyar</option>
+              <option value="Német">Német</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact">Bemutatkozás/ rövid leírás (max 2000 karakter)</label>
+            <textarea rows="4" cols="50" maxlength="2000" class="form-control" id="companyDescription" [(ngModel)]="bejelentkezettFelhasznalo.allaskereso.oneletrajz.leiras"></textarea>
+          </div>
+        </div>
       </div>
     </div>
 

@@ -36,7 +36,6 @@ export class Felhasznalo {
     public jelszo?: string,
     public engedelyezve?: number,
     public roles?: Role[],
-    public allaskeresoId?: number,
     public munkaltato?: Munkaltato,
     public allaskereso?: Allaskereso
   ) {

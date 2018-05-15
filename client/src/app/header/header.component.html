@@ -8,21 +8,21 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['allaskereses']">Munkalehetőség keresés</a>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['allaskereses']">Munkalehetőségek keresés</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLoggedIn">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['ujajanlat']">Új hirdetés feladása</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLoggedIn">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['profil']">Profil</a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['bejelentkezes']">Bejelentkezés</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLinkActive="active" (click)="logout()">Kijelentkezés</a>
+          <a class="nav-link" routerLinkActive="active" (click)="logout()" [routerLink]="['fooldal']">Kijelentkezés</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['regisztracio']">Regisztráció</a>
         </li>
       </ul>
