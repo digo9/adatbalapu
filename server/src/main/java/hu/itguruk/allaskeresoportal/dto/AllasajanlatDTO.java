@@ -17,7 +17,7 @@ public class AllasajanlatDTO {
 
     private List<Allaskereso> jelentkezo;
 
-    private Munkaltato ajanlatFeladojaD;
+    private Munkaltato ajanlatFeladoja;
 
     private String leiras;
 
