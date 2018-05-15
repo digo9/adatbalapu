@@ -43,11 +43,11 @@ public class Allaskereso implements Serializable {
 
   private Date utolsoBejelentkezes;
 
-  @OneToOne(cascade = {CascadeType.ALL})
+  @OneToOne(cascade = {CascadeType.ALL, CascadeType.REMOVE})
   private Oneletrajz oneletrajz;
 
   @JsonIgnore
-  @ManyToMany(mappedBy = "jelentkezos")
+  @ManyToMany(mappedBy = "jelentkezos", cascade = {CascadeType.ALL, CascadeType.REMOVE})
   private List<Allasajanlat> allasajanlats = new ArrayList<>();
 
 //  @OneToOne(cascade = {CascadeType.ALL})

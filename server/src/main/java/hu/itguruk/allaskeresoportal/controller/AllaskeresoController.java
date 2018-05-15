@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,7 +46,12 @@ public class AllaskeresoController {
 
   @GetMapping("/{id}")
   public AllaskeresoDTO getOneById(@PathVariable(value = "id") Long id) {
-    return modelMapper.map(allaskeresoRepository.findOne(id),AllaskeresoDTO.class);
+    return modelMapper.map(allaskeresoRepository.findOne(id), AllaskeresoDTO.class);
+  }
+
+  @DeleteMapping("/{id}")
+  public void deleteOneById(@PathVariable(value = "id") Long id) {
+    allaskeresoRepository.delete(id);
   }
 
   @PostMapping("/create")
@@ -63,7 +69,11 @@ public class AllaskeresoController {
   }
 
   @GetMapping("/{id}/allasajanlatok")
-  public List<Allasajanlat> assignedUsers(@PathVariable (value = "id") Long id) {
-    return allasajanlatRepository.findByJelentkezos_Id(id);
+  public List<Allasajanlat> assignedUsers(@PathVariable(value = "id") Long id) {
+    List<Allasajanlat> list = allasajanlatRepository.findByJelentkezos_Id(id);
+    list.stream().forEach(item -> {
+      item.setJelentkezos(null);
+    });
+    return list;
   }
 }

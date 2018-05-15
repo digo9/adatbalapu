@@ -34,10 +34,9 @@ public class AllasajanlatController {
     MunkaltatoRepository munkaltatoRepository;
 
     @GetMapping("/all")
-    public List<AllasajanlatDTO> getAll() {
+    public List<Allasajanlat> getAll() {
         return allasajanlatRepository.findAll()
                 .stream()
-                .map(ajanlat -> modelMapper.map(ajanlat, AllasajanlatDTO.class))
                 .collect(Collectors.toList());
     }
 
@@ -73,7 +72,9 @@ public class AllasajanlatController {
 
     @GetMapping("/{id}/munkaltato")
     public Munkaltato munkaltato(@PathVariable (value = "id") Long id ){
-        return munkaltatoRepository.findByAllasajanlats_id(id);
+        Munkaltato munk = munkaltatoRepository.findByAllasajanlats_id(id);
+        munk.setAllasajanlats(null);
+        return munk;
     }
 
 }

@@ -35,14 +35,13 @@ public class Allasajanlat implements Serializable {
 
   private String megnevezes;
   
-  @ManyToMany(cascade = {CascadeType.ALL})
+  @ManyToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE})
   @JoinTable(name = "allasajanlat_allaskereso",
       joinColumns = @JoinColumn(name = "allasajanlat_id"),
       inverseJoinColumns = @JoinColumn(name = "allaskereso_id")
   )
   private List<Allaskereso> jelentkezos;
 
-  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "munkaltato_ID", referencedColumnName = "ID")
   private Munkaltato munkaltato;
@@ -50,7 +49,7 @@ public class Allasajanlat implements Serializable {
   @Size(max = 2000)
   private String leiras;
 
-  @ManyToMany(cascade = {CascadeType.ALL})
+  @ManyToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE})
   @JoinTable(name = "allasajanlat_vegzettseg",
       joinColumns = @JoinColumn(name = "allasajanlat_id"),
       inverseJoinColumns = @JoinColumn(name = "vegzettseg_id")
