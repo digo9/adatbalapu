@@ -29,7 +29,7 @@ public class Vegzettseg {
   private Long id;
 
   @JsonIgnore
-  @ManyToMany(mappedBy = "vegzettsegs")
+  @ManyToMany(mappedBy = "vegzettsegs", cascade = {CascadeType.ALL, CascadeType.REMOVE})
   private List<Allasajanlat> allasajanlats = new ArrayList<>();
 
   @ManyToMany

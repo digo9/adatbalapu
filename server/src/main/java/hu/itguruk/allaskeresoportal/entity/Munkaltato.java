@@ -29,10 +29,11 @@ public class Munkaltato {
 
   private String cegLeiras;
 
-  @OneToMany(cascade = {CascadeType.ALL})
+  @OneToMany(cascade = {CascadeType.ALL, CascadeType.REMOVE})
   private List<Szekhely> szekhely;
 
-  @OneToMany(cascade={CascadeType.ALL}, mappedBy="munkaltato")
+  @JsonIgnore
+  @OneToMany(cascade={CascadeType.ALL, CascadeType.REMOVE}, mappedBy="munkaltato")
   private List<Allasajanlat> allasajanlats =
       new ArrayList<Allasajanlat>();
 
