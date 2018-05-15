@@ -14,7 +14,7 @@ import { MunkaltatoService } from '../service/munkaltato.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  styleUrls: ['./registration.component.css', '../app.component.css']
 })
 export class RegistrationComponent implements OnInit {
   public profileType = 0;
