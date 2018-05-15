@@ -38,7 +38,7 @@ public class MunkaltatoController {
 
   @GetMapping("/{id}")
   public MunkaltatoDTO getOneById(@PathVariable(value = "id") Long id) {
-    return modelMapper.map(munkaltatoRepository.getOne(id),MunkaltatoDTO.class);
+    return modelMapper.map(munkaltatoRepository.findOne(id),MunkaltatoDTO.class);
   }
 
   @PostMapping("/create")

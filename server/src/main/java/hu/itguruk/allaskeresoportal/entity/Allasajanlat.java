@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Data;
@@ -32,13 +33,14 @@ public class Allasajanlat implements Serializable {
   @ManyToMany(cascade = {CascadeType.ALL})
   private List<Allaskereso> jelentkezo;
 
-  @ManyToOne(cascade = {CascadeType.ALL})
-  private Munkaltato ajanlatFeladoja;
+  @ManyToOne
+  @JoinColumn(name = "munkaltato_ID", referencedColumnName = "ID")
+  private Munkaltato munkaltato;
 
   @Size(max = 2000)
   private String leiras;
 
-  @ManyToMany
+  @ManyToMany(cascade = {CascadeType.ALL})
   private List<Vegzettseg> vegzettseg;
 
   private BigDecimal fizetes;

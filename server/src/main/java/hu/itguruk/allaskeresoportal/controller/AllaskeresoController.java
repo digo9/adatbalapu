@@ -40,14 +40,14 @@ public class AllaskeresoController {
 
   @GetMapping("/{id}")
   public AllaskeresoDTO getOneById(@PathVariable(value = "id") Long id) {
-    return modelMapper.map(allaskeresoRepository.getOne(id),AllaskeresoDTO.class);
+    return modelMapper.map(allaskeresoRepository.findOne(id),AllaskeresoDTO.class);
   }
 
   @PostMapping("/create")
   @ResponseStatus(value = HttpStatus.OK)
   public ResponseEntity<Allaskereso> saveOrUpdate(@RequestBody Allaskereso allaskereso) {
     allaskereso.setUtolsoBejelentkezes(new Date());
-    allaskereso.getFelhasznalo().setEngedelyezve(true);
+    // allaskereso.getFelhasznalo().setEngedelyezve(true);
     return ResponseEntity.ok(allaskeresoRepository.save(allaskereso));
   }
 

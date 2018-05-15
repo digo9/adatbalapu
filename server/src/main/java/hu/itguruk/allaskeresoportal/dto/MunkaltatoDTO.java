@@ -1,5 +1,7 @@
 package hu.itguruk.allaskeresoportal.dto;
 
+import hu.itguruk.allaskeresoportal.entity.BaseUser;
+import hu.itguruk.allaskeresoportal.entity.Szekhely;
 import lombok.Data;
 
 import java.util.List;
@@ -13,7 +15,7 @@ public class MunkaltatoDTO {
 
     private String cegLeiras;
 
-    private List<SzekhelyDTO> szekhelyDTOList;
+    private List<Szekhely> szekhely;
 
-    private BaseUserDTO baseUserDTO;
+    private BaseUser baseUser;
 }

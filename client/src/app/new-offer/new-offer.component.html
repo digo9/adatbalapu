@@ -13,15 +13,17 @@
     </div>
     <div class="form-group">
       <label for="vegzettseg">Elvárt végzettségek</label>
-      <input type="text" class="form-control" id="vegzettseg" name="vegzettseg" [(ngModel)]="allasajanlat.vegzettseg">
+      <input type="text" class="form-control" id="vegzettseg" name="vegzettseg" [(ngModel)]="vegzettsegek[0].megnevezes">
     </div>
     <div class="form-group">
       <label for="fizetes">Kínált fizetés</label>
-      <input type="text" class="form-control" id="fizetes" name="fizetes" [(ngModel)]="allasajanlat.fizetes">
+      <input type="number" class="form-control" id="fizetes" name="fizetes" [(ngModel)]="allasajanlat.fizetes">
     </div>
 
     <div>
       <button (click)="submitForm()" class="btn btn-primary">Hirdetés feladása</button>
     </div>
   </form>
+  <ngb-alert *ngIf="errorMessage" type="danger" (close)="!errorMessage">Hiba történt a regisztráció során!</ngb-alert>
+  <ngb-alert *ngIf="successMessage" type="success" (close)="!successMessage">Sikeres mentés!</ngb-alert>
 </div>

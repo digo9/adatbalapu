@@ -37,16 +37,16 @@ public class AllasajanlatController {
 
     @PostMapping("/create")
     @ResponseStatus(value = HttpStatus.OK)
-    public ResponseEntity<Allasajanlat> saveOrUpdate(@RequestBody AllasajanlatDTO allasajanlatDTO) {
-        Allasajanlat allasajanlat = modelMapper.map(allasajanlatDTO, Allasajanlat.class);
+    public ResponseEntity<Allasajanlat> saveOrUpdate(@RequestBody Allasajanlat allasajanlat) {
+        // Allasajanlat allasajanlat = modelMapper.map(allasajanlatDTO, Allasajanlat.class);
         return ResponseEntity.ok(allasajanlatRepository.save(allasajanlat));
     }
 
     @PutMapping("/update")
     @ResponseStatus(value = HttpStatus.OK)
-    public ResponseEntity<Allasajanlat> update(@RequestBody AllasajanlatDTO allasajanlatDTO) {
-        Allasajanlat vegzettseg = modelMapper.map(allasajanlatDTO, Allasajanlat.class);
-        return ResponseEntity.ok(allasajanlatRepository.save(vegzettseg));
+    public ResponseEntity<Allasajanlat> update(@RequestBody Allasajanlat allasajanlat) {
+        // Allasajanlat vegzettseg = modelMapper.map(allasajanlatDTO, Allasajanlat.class);
+        return ResponseEntity.ok(allasajanlatRepository.save(allasajanlat));
     }
 
 }

@@ -1,6 +1,8 @@
 package hu.itguruk.allaskeresoportal.dto;
 
+import hu.itguruk.allaskeresoportal.entity.Allaskereso;
 import hu.itguruk.allaskeresoportal.entity.Munkaltato;
+import hu.itguruk.allaskeresoportal.entity.Vegzettseg;
 import java.math.BigDecimal;
 import lombok.Data;
 
@@ -13,13 +15,13 @@ public class AllasajanlatDTO {
     
     private String megnevezes;
 
-    private List<AllaskeresoDTO> jelentkezoDTOList;
+    private List<Allaskereso> jelentkezo;
 
-    private MunkaltatoDTO ajanlatFeladojaDTO;
+    private Munkaltato ajanlatFeladojaD;
 
     private String leiras;
 
-    private List<VegzettsegDTO> vegzettsegDTOList;
+    private List<Vegzettseg> vegzettseg;
 
     private BigDecimal fizetes;
 

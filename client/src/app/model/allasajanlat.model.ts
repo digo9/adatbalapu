@@ -7,7 +7,7 @@ export class Allasajanlat {
     public id?: number,
     public megnevezes?: String,
     public jelentkezo?: Allaskereso[],
-    public ajanlatFeladoja?: Munkaltato,
+    public munkaltato?: Munkaltato,
     public leiras?: String,
     public fizetes?: number,
     public vegzettseg?: Vegzettseg[]

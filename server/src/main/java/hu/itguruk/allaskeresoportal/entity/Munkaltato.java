@@ -1,6 +1,7 @@
 package hu.itguruk.allaskeresoportal.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,6 +31,10 @@ public class Munkaltato {
 
   @OneToMany(cascade = {CascadeType.ALL})
   private List<Szekhely> szekhely;
+
+  @OneToMany(cascade={CascadeType.ALL}, mappedBy="munkaltato")
+  private List<Allasajanlat> allasajanlats =
+      new ArrayList<Allasajanlat>();
 
   @JsonIgnore
   @OneToOne

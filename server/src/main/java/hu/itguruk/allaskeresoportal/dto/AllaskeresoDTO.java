@@ -1,5 +1,6 @@
 package hu.itguruk.allaskeresoportal.dto;
 
+import hu.itguruk.allaskeresoportal.entity.BaseUser;
 import hu.itguruk.allaskeresoportal.entity.Oneletrajz;
 import hu.itguruk.allaskeresoportal.entity.Role;
 import lombok.Data;
@@ -21,8 +22,8 @@ public class AllaskeresoDTO {
 
     private Date utolsoBejelentkezes;
 
-    private OneletrajzDTO oneletrajzDTO;
+    private Oneletrajz oneletrajz;
 
-    private BaseUserDTO baseUserDTO;
+    private BaseUser baseUser;
 
 }

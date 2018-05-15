@@ -7,6 +7,7 @@ import { debounceTime } from 'rxjs/operators';
 import { Munkaltato } from '../model/munkaltato.model';
 import { AuthenticationService } from '../auth/authentication.service';
 import { MunkaltatoService } from '../service/munkaltato.service';
+import { FelhasznaloService } from '../service/felhasznalo.service';
 
 @Component({
   selector: 'app-new-offer',
@@ -14,7 +15,6 @@ import { MunkaltatoService } from '../service/munkaltato.service';
   styleUrls: ['./new-offer.component.css', '../app.component.css']
 })
 export class NewOfferComponent implements OnInit {
-
   allasajanlat: Allasajanlat;
   vegzettsegek: Vegzettseg[] = [];
   felado: Munkaltato;
@@ -26,11 +26,12 @@ export class NewOfferComponent implements OnInit {
   constructor(
     private allasajanlatService: AllasajanlatService,
     private authenticationService: AuthenticationService,
-    private munkaltatoService: MunkaltatoService
-  ) { }
+    private felhasznaloService: FelhasznaloService
+  ) {}
 
   ngOnInit() {
-    this.clearAll();
+    this.allasajanlat = new Allasajanlat();
+    this.vegzettsegek.push(new Vegzettseg());
     this._error.subscribe(isMessage => (this.errorMessage = isMessage));
     this._error
       .pipe(debounceTime(5000))
@@ -41,14 +42,16 @@ export class NewOfferComponent implements OnInit {
       .pipe(debounceTime(5000))
       .subscribe(() => (this.successMessage = false));
 
-    this.munkaltatoService.getMunkaltatoById(this.authenticationService.currentFelhasznalo.id).subscribe(res => {
-      this.felado = res;
-    });
+    this.felhasznaloService
+      .getFelhasznaloById(this.authenticationService.currentFelhasznalo.id)
+      .subscribe(res => {
+        this.felado = res.munkaltato;
+      });
+    this.vegzettsegek.push(new Vegzettseg());
   }
 
   clearAll() {
     this.allasajanlat = {};
-    this.vegzettsegek = [];
   }
 
   public submitForm() {
@@ -59,7 +62,9 @@ export class NewOfferComponent implements OnInit {
     console.log('vegzettseg : ', this.allasajanlat.vegzettseg);
     console.log('fizetes : ', this.allasajanlat.fizetes);
 
-    this.allasajanlat.ajanlatFeladoja = this.felado;
+    this.allasajanlat.munkaltato = this.felado;
+    this.allasajanlat.vegzettseg = [];
+    this.allasajanlat.vegzettseg.push(this.vegzettsegek[0]);
     this.allasajanlatService.createAllasajanlat(this.allasajanlat).subscribe(
       res => {
         console.log(res);

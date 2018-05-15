@@ -44,7 +44,7 @@ public class Allaskereso {
   @OneToOne(cascade = {CascadeType.ALL})
   private Oneletrajz oneletrajz;
 
-  @OneToOne(cascade = {CascadeType.ALL})
-  private BaseUser felhasznalo;
+//  @OneToOne(cascade = {CascadeType.ALL})
+//  private BaseUser felhasznalo;
 
 }
