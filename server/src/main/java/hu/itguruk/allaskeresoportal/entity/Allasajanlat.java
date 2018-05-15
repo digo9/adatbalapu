@@ -1,10 +1,12 @@
 package hu.itguruk.allaskeresoportal.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Data;
@@ -31,8 +33,13 @@ public class Allasajanlat implements Serializable {
   private String megnevezes;
   
   @ManyToMany(cascade = {CascadeType.ALL})
-  private List<Allaskereso> jelentkezo;
+  @JoinTable(name = "allasajanlat_allaskereso",
+      joinColumns = @JoinColumn(name = "allasajanlat_id"),
+      inverseJoinColumns = @JoinColumn(name = "allaskereso_id")
+  )
+  private List<Allaskereso> jelentkezos;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "munkaltato_ID", referencedColumnName = "ID")
   private Munkaltato munkaltato;

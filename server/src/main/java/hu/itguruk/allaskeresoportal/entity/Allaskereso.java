@@ -1,6 +1,7 @@
 package hu.itguruk.allaskeresoportal.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -43,6 +44,10 @@ public class Allaskereso {
 
   @OneToOne(cascade = {CascadeType.ALL})
   private Oneletrajz oneletrajz;
+
+  @JsonIgnore
+  @ManyToMany(mappedBy = "jelentkezos")
+  private List<Allasajanlat> allasajanlats = new ArrayList<>();
 
 //  @OneToOne(cascade = {CascadeType.ALL})
 //  private BaseUser felhasznalo;

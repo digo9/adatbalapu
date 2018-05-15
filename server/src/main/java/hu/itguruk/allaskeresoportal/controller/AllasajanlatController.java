@@ -2,7 +2,10 @@ package hu.itguruk.allaskeresoportal.controller;
 
 import hu.itguruk.allaskeresoportal.dto.AllasajanlatDTO;
 import hu.itguruk.allaskeresoportal.entity.Allasajanlat;
+import hu.itguruk.allaskeresoportal.entity.Allaskereso;
+import hu.itguruk.allaskeresoportal.entity.BaseUser;
 import hu.itguruk.allaskeresoportal.repository.AllasajanlatRepository;
+import hu.itguruk.allaskeresoportal.repository.AllaskeresoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +25,9 @@ public class AllasajanlatController {
     @Autowired
     ModelMapper modelMapper;
 
+    @Autowired
+    AllaskeresoRepository allaskeresoRepository;
+
     @GetMapping("/all")
     public List<AllasajanlatDTO> getAll() {
         return allasajanlatRepository.findAll()
@@ -39,7 +45,7 @@ public class AllasajanlatController {
     @ResponseStatus(value = HttpStatus.OK)
     public ResponseEntity<Allasajanlat> saveOrUpdate(@RequestBody Allasajanlat allasajanlat) {
         // Allasajanlat allasajanlat = modelMapper.map(allasajanlatDTO, Allasajanlat.class);
-        return ResponseEntity.ok(allasajanlatRepository.save(allasajanlat));
+      return ResponseEntity.ok(allasajanlatRepository.save(allasajanlat));
     }
 
     @PutMapping("/update")
@@ -47,6 +53,11 @@ public class AllasajanlatController {
     public ResponseEntity<Allasajanlat> update(@RequestBody Allasajanlat allasajanlat) {
         // Allasajanlat vegzettseg = modelMapper.map(allasajanlatDTO, Allasajanlat.class);
         return ResponseEntity.ok(allasajanlatRepository.save(allasajanlat));
+    }
+
+    @GetMapping("/{id}/users")
+    public List<Allaskereso> assignedUsers(@PathVariable (value = "id") Long id) {
+       return allaskeresoRepository.findByAllasajanlats_Id(id);
     }
 
 }
