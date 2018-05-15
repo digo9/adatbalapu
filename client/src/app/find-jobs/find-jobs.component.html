@@ -1,22 +1,62 @@
 <div class="container">
   <div class="col-sm-12">
 
-    <div *ngFor="let ajanlat of allasajanlatok">
-      <div class="bs-calltoaction bs-calltoaction-primary">
-        <div class="row">
-          <div class="col-md-9 cta-contents">
-            <h1 class="cta-title">{{ ajanlat.megnevezes }}</h1>
-            <div class="cta-desc">
-              <p *ngIf="ajanlat.ajanlatFeladoja">Feladó: {{ ajanlat.ajanlatFeladoja.cegNev }}</p>
-              <p>Elvárt végzettség(ek): {{ ajanlat.vegzettseg }}</p>
-            </div>
-          </div>
-          <div class="col-md-3 cta-button">
-            <a class="btn btn-lg btn-block btn-primary" [routerLink]="['/allasajanlat']">Megnyitás</a>
-          </div>
-        </div>
+    <div *ngIf="isLoggedIn">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="hirdetesType" id="hirdetesType1" [value]="0" [(ngModel)]="hirdetesType"
+          checked>
+        <label class="form-check-label" for="hirdetesType1">
+          Minden hirdetés
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="hirdetesType" id="hirdetesType2" [value]="1" [(ngModel)]="hirdetesType">
+        <label class="form-check-label" for="hirdetesType2">
+          Jelentkezett hirdetések
+        </label>
       </div>
     </div>
 
+    <!-- Osszes hirdetes -->
+    <fieldset *ngIf="hirdetesType == 0">
+      <div *ngFor="let ajanlat of allasajanlatok">
+        <div class="bs-calltoaction bs-calltoaction-primary">
+          <div class="row">
+            <div class="col-md-9 cta-contents">
+              <h1 class="cta-title">{{ ajanlat.megnevezes }}</h1>
+              <div class="cta-desc">
+                <p *ngIf="ajanlat.ajanlatFeladoja">Feladó: {{ ajanlat.ajanlatFeladoja.cegNev }}</p>
+                <p>Elvárt végzettség(ek): {{ ajanlat.vegzettseg }}</p>
+                <p>Br. havi fizetés: {{ ajanlat.fizetes }} Ft</p>
+              </div>
+            </div>
+            <div class="col-md-3 cta-button">
+              <a class="btn btn-lg btn-block btn-primary" [routerLink]="['/allasajanlat']">Megnyitás</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Jelentkezett hirdetesek -->
+    <fieldset *ngIf="hirdetesType == 1">
+      <div *ngFor="let ajanlat of jelentkezettAllasajanlatok">
+        <div class="bs-calltoaction bs-calltoaction-primary">
+          <div class="row">
+            <div class="col-md-9 cta-contents">
+              <h1 class="cta-title">{{ ajanlat.megnevezes }}</h1>
+              <div class="cta-desc">
+                <p *ngIf="ajanlat.ajanlatFeladoja">Feladó: {{ ajanlat.ajanlatFeladoja.cegNev }}</p>
+                <p>Elvárt végzettség(ek): {{ ajanlat.vegzettseg }}</p>
+                <p>Br. havi fizetés: {{ ajanlat.fizetes }} Ft</p>
+              </div>
+            </div>
+            <div class="col-md-3 cta-button">
+              <a class="btn btn-lg btn-block btn-primary" [routerLink]="['/allasajanlat']">Megnyitás</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
   </div>
 </div>

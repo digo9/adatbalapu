@@ -13,6 +13,9 @@
       <h3>Elvárt végzettségek</h3>
       <p>{{allasajanlat.vegzettseg}}</p>
 
+      <h3>Fizetés</h3>
+      <p>br. havi {{allasajanlat.fizetes}} Ft</p>
+
       <h3>A munkáltató adatai:</h3>
       <p>{{allasajanlat.ajanlatFeladoja.cegNev}}</p>
       <p>{{allasajanlat.ajanlatFeladoja.szekhely}}</p>
@@ -20,5 +23,39 @@
       <button type="button" class="btn btn-primary btn-block" *ngIf="isLoggedIn" (click)="allaskeresoJelentkezik()">Jelentkezem!</button>
     </div>
     <div class="col-md-2"></div>
+  </div>
+
+  <h2>A hirdetésre jelentkezett személyek:</h2>
+  <!-- Mock start -->
+  <div class="bs-calltoaction bs-calltoaction-primary">
+    <div class="row">
+      <div class="col-md-9 cta-contents">
+        <h1 class="cta-title">asd asd</h1>
+        <div class="cta-desc">
+          <p>E-mail: asd</p>
+        </div>
+      </div>
+      <div class="col-md-3 cta-button">
+        <a class="btn btn-lg btn-block btn-primary" [routerLink]="['/profil']">Megnyitás</a>
+      </div>
+    </div>
+  </div>
+  <!-- Mock end -->
+  <div *ngIf="jelentkezettAllaskeresok">
+    <div *ngFor="let jelentkezettAllaskereso of jelentkezettAllaskeresok">
+      <div class="bs-calltoaction bs-calltoaction-primary">
+        <div class="row">
+          <div class="col-md-9 cta-contents">
+            <h1 class="cta-title">{{ jelentkezettAllaskereso.vezeteknev }} {{ jelentkezettAllaskereso.keresztnev }}</h1>
+            <div class="cta-desc">
+              <p>E-mail: {{ jelentkezettAllaskereso.felhasznalo.email }}</p>
+            </div>
+          </div>
+          <div class="col-md-3 cta-button">
+            <a class="btn btn-lg btn-block btn-primary" [routerLink]="['/profil']">Megnyitás</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

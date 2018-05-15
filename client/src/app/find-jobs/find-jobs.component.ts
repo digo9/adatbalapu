@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AllasajanlatService } from '../service/allasajanlat.service';
 import { Allasajanlat } from '../model/allasajanlat.model';
+import { AuthenticationService } from '../auth/authentication.service';
 
 @Component({
   selector: 'app-find-jobs',
@@ -9,13 +10,20 @@ import { Allasajanlat } from '../model/allasajanlat.model';
 })
 export class FindJobsComponent implements OnInit {
 
-  allasajanlatok: Allasajanlat[] = [];
+  allasajanlatok: Allasajanlat[];
+  jelentkezettAllasajanlatok: Allasajanlat[];
+  hirdetesType = 0;
+  isLoggedIn = false;
 
   constructor(
-    private allasajanlatService: AllasajanlatService
+    private allasajanlatService: AllasajanlatService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
+    this.clearAll();
+    this.allaskeresoIsLoggedIn();
+
     this.allasajanlatService.getAllasajanlatAll().subscribe(
       (res: any) => {
         this.allasajanlatok = res;
@@ -25,5 +33,16 @@ export class FindJobsComponent implements OnInit {
         });
       },
     );
+  }
+
+  allaskeresoIsLoggedIn() {
+    this.authenticationService.isLoggedIn().then(data => {
+      this.isLoggedIn = data;
+    });
+  }
+
+  clearAll() {
+    this.allasajanlatok = [];
+    this.jelentkezettAllasajanlatok = [];
   }
 }

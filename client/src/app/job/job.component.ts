@@ -13,7 +13,6 @@ import { Felhasznalo } from '../model/baseuser.model';
 })
 export class JobComponent implements OnInit {
 
-
   felhasznalo: Felhasznalo;
   allasajanlat: Allasajanlat;
   jelentkezettAllaskeresok: Allaskereso[];
@@ -42,6 +41,7 @@ export class JobComponent implements OnInit {
 
   clearAll() {
     this.allasajanlat = {};
+    this.jelentkezettAllaskeresok = [];
   }
 
   allaskeresoJelentkezik() {
