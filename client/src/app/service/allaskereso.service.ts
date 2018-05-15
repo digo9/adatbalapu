@@ -11,11 +11,11 @@ export class AllaskeresoService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getAllaskeresoAll(): Observable<Allaskereso> {
+  public getAllaskeresoAll(): Observable<Allaskereso[]> {
     const url = SERVER_API_URL + this.baseUrl + 'all';
     const params = new HttpParams();
 
-    return this.httpClient.get<Allaskereso>(url, {
+    return this.httpClient.get<Allaskereso[]>(url, {
       params: params
     });
   }
@@ -25,6 +25,14 @@ export class AllaskeresoService {
     const params = new HttpParams();
 
     return this.httpClient.get<Allaskereso>(url, { params: params });
+  }
+
+  public getAssignedUsers(allasajanlatId: number): Observable<Allaskereso[]> {
+    const url =
+      SERVER_API_URL + this.baseUrl + allasajanlatId + '/allasajanlatok';
+    const params = new HttpParams();
+
+    return this.httpClient.get<Allaskereso[]>(url, { params: params });
   }
 
   public createAllaskereso(allaskereso: Allaskereso): Observable<Allaskereso> {
