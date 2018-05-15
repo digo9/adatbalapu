@@ -4,6 +4,9 @@ import { Vegzettseg } from '../model/vegzettseg.model';
 import { AllasajanlatService } from '../service/allasajanlat.service';
 import { Subject } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operators';
+import { Munkaltato } from '../model/munkaltato.model';
+import { AuthenticationService } from '../auth/authentication.service';
+import { MunkaltatoService } from '../service/munkaltato.service';
 
 @Component({
   selector: 'app-new-offer',
@@ -14,13 +17,16 @@ export class NewOfferComponent implements OnInit {
 
   allasajanlat: Allasajanlat;
   vegzettsegek: Vegzettseg[] = [];
+  felado: Munkaltato;
   public errorMessage = false;
   public successMessage = false;
   private _error = new Subject<boolean>();
   private _success = new Subject<boolean>();
 
   constructor(
-    private allasajanlatService: AllasajanlatService
+    private allasajanlatService: AllasajanlatService,
+    private authenticationService: AuthenticationService,
+    private munkaltatoService: MunkaltatoService
   ) { }
 
   ngOnInit() {
@@ -34,6 +40,10 @@ export class NewOfferComponent implements OnInit {
     this._success
       .pipe(debounceTime(5000))
       .subscribe(() => (this.successMessage = false));
+
+    this.munkaltatoService.getMunkaltatoById(this.authenticationService.currentFelhasznalo.id).subscribe(res => {
+      this.felado = res;
+    });
   }
 
   clearAll() {
@@ -49,6 +59,7 @@ export class NewOfferComponent implements OnInit {
     console.log('vegzettseg : ', this.allasajanlat.vegzettseg);
     console.log('fizetes : ', this.allasajanlat.fizetes);
 
+    this.allasajanlat.ajanlatFeladoja = this.felado;
     this.allasajanlatService.createAllasajanlat(this.allasajanlat).subscribe(
       res => {
         console.log(res);

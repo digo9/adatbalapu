@@ -1,0 +1,28 @@
+<div class="container">
+
+  <!-- Allaskereso fields -->
+  <div *ngIf="felhasznalo.allaskereso">
+    <h3>{{felhasznalo.allaskereso.vezeteknev }} {{ felhasznalo.allaskereso.keresztnev }}</h3>
+    <h4>Elérhetőség: {{ felhasznalo.allaskereso.elerhetoseg }}</h4>
+
+    <div *ngIf="felhasznalo.allaskereso.oneletrajz">
+      <h3>Önéletrajz</h3>
+      <p>Nyelv: {{ felhasznalo.allaskereso.oneletrajz.nyelv }}</p>
+      <p>{{ felhasznalo.allaskereso.oneletrajz.leiras }}</p>
+    </div>
+  </div>
+
+  <!-- Munkaltato fields -->
+  <div *ngIf="felhasznalo.munkaltato">
+    <h2 class="text-center">{{ felhasznalo.munkaltato.cegNev }}</h2>
+    <h3>Székhely:</h3>
+    <p>{{ felhasznalo.munkaltato.szekhely }}</p>
+    <h3>Bemutatkozás:</h3>
+    <p>{{ felhasznalo.munkaltato.cegLeiras }}</p>
+  </div>
+
+  <!-- Global fields -->
+  <h3>E-mail cím:</h3>
+  <p>{{ felhasznalo.email }}</p>
+
+</div>

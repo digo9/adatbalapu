@@ -29,6 +29,7 @@ import { FelhasznaloService } from './service/felhasznalo.service';
 import { AllasajanlatService } from './service/allasajanlat.service';
 import { ProfilComponent } from './profile/profile.component';
 import { MunkaltatoService } from './service/munkaltato.service';
+import { ViewProfileComponent } from './profile/view-profile/view-profile.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MunkaltatoService } from './service/munkaltato.service';
     NewOfferComponent,
     Page403Component,
     Page401Component,
-    ProfilComponent
+    ProfilComponent,
+    ViewProfileComponent
   ],
   imports: [
     BrowserModule,
